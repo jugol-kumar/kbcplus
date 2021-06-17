@@ -1,0 +1,30 @@
+.g-summer{
+    background: #a8ff78; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a8ff78, #78ffd6); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a8ff78, #78ffd6);
+}
+.g-margo{
+    background: #ffefba; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffefba, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffefba, #ffffff);
+}
+.g-roseanna{
+    background: #ffafbd; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffafbd, #ffc3a0); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffafbd, #ffc3a0);
+}
+.g-limeade{
+    background: #a1ffce; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a1ffce, #faffd1); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a1ffce, #faffd1);
+}
+.g-sunny{
+    background: #a1ffce; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a1ffce, #faffd1); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a1ffce, #faffd1);
+}
+.g-virgin{
+    background: #c9ffbf; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #c9ffbf, #ffafbd); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #c9ffbf, #ffafbd);
+}
