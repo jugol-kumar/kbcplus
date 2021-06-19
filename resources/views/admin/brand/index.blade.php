@@ -104,7 +104,7 @@
     </div>
 {{--    ----------------------------------------add Modal end modal is here ----------------------------------------}}
 
-{{--    ----------------------------------------add Modal Start modal is here --------------------------------------}}
+{{--    ----------------------------------------edit Modal Start modal is here --------------------------------------}}
     <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -159,57 +159,8 @@
             </div>
         </div>
     </div>
-{{--    ----------------------------------------add Modal end modal is here ----------------------------------------}}
+{{--    ----------------------------------------edit Modal end modal is here ----------------------------------------}}
 
-
-<div>
-
-{{--    ----------------------------------------add Modal Start modal is here --------------------------------------}}
-{{--    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog">--}}
-{{--        <div class="modal-dialog" role="document">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="header">--}}
-{{--                        <h3>Edit Sub Category </h3>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <form action="{{ route('app.subcategory.update', 'id') }}" method="post">--}}
-{{--                            @method('PUT')--}}
-{{--                            @csrf--}}
-{{--                            <div class="form-row mb-3">--}}
-{{--                                <label for="">Category Name</label>--}}
-{{--                                <select id="max-select" name="category_id" class="form-control show-tick ms">--}}
-{{--                                    <option disabled>~~Select Category~~</option>--}}
-{{--                                    @foreach($categories as $key => $item)--}}
-{{--                                        <option value="{{ $item->id }}">{{ $item->name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-
-{{--                            <div class="form-row mb-3">--}}
-{{--                                <label for="">Sub Category Name</label>--}}
-{{--                                <input type="text" name="name" id="sub_category" class="form-control">--}}
-{{--                                <input type="hidden" name="id" id="id" class="form-control">--}}
-{{--                            </div>--}}
-{{--                            <div class="form-row">--}}
-{{--                                <label for="">Category Name</label>--}}
-{{--                                <textarea name="description" class="form-control" rows="5" id="description"></textarea>--}}
-{{--                                <small class="text-danger">Max 150 character Description Text</small>--}}
-{{--                            </div>--}}
-{{--                            <div class="btn-group mt-3">--}}
-{{--                                <button type="submit" class="btn l-coral">Save Category</button>--}}
-{{--                                <button type="button"  data-dismiss="modal" class="btn l-parpl">Cancel</button>--}}
-{{--                            </div>--}}
-
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    ----------------------------------------add Modal end modal is here ----------------------------------------}}
-
-</div>
 
 @endsection
 @push('js')
