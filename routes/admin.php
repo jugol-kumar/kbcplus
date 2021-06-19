@@ -39,6 +39,11 @@ Route::post('/delete-sub-category', [SubCategoryController::class, 'destroy'])->
 
 //Brand route
 Route::resource('brand', BrandController::class);
+Route::get('/all-brand', [BrandController::class, 'allBrand'])->name('brand.all.show');
+Route::post('/edit-brand', [BrandController::class, 'editBrand'])->name('brand.edit');
+Route::post('/update-brand', [BrandController::class, 'updateBrand'])->name('brand.update');
+//Route::post('/delete-brand', [BrandController::class, 'deleteBrand'])->name('brand.delete');
+
 
 //Product route
 Route::resource('product', ProductController::class);

@@ -1,19 +1,6 @@
 @extends('layouts.admin.app')
 @push('css')
-    <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://unpkg.com/file-upload-with-preview@4.1.0/dist/file-upload-with-preview.min.css"
-    />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/switch/switch.css') }}">
-    <style>
-        .custom-file-container__image-preview{
-            overflow: hidden;
-        }
-        #brand_image{
-            margin-top: 35px;
-        }
-    </style>
 @endpush
 @section('content')
     <div id="main-content">
@@ -27,74 +14,36 @@
                     <div class="card">
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-striped js-basic-example  table-custom">
+                                <table id="show-table" class="table table-striped js-basic-example  table-custom">
                                     <thead>
-                                    <tr>
-                                        <th>#Id</th>
-                                        <th>Brand's Name</th>
-                                        <th>Avatar</th>
-                                        <th>Sub Category</th>
-                                        <th>Description</th>
-                                        <th>Created At</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>#Id</th>
+                                            <th>Brand's Name</th>
+                                            <th>Avatar</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </thead>
                                     <tfoot>
-                                    <tr>
-                                        <th>#Id</th>
-                                        <th>Brand's Name</th>
-                                        <th>Avatar</th>
-                                        <th>Sub Category</th>
-                                        <th>Description</th>
-                                        <th>Created At</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>#Id</th>
+                                            <th>Brand's Name</th>
+                                            <th>Avatar</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach ($brands as $key=> $item)
-                                        <tr>
-                                            <td>{{ $key+1 }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td><img src="{{ asset('storage/brands') }}/{{ $item->brand_logo }}"class="rounded-circle" width="48" height="48" alt=""></td>
-                                            <td>{{ $item->subcategory->name }}</td>
-                                            <td>{{ $item->description }}</td>
-                                            <td>{{ $item->created_at->diffForHumans() }}</td>
-                                            <td>
-                                                <a data-toggle="modal"
-                                                   data-target="#show-modal"
-                                                   data-id="{{ $item->id }}"
-                                                   data-name="{{ $item->name }}"
-                                                   data-desctiptioin="{{ $item->description }}"
-                                                   data-category="{{ $item->subcategory->name }}"
-                                                   data-image="{{ asset('storage/brands') }}/{{ $item->brand_logo }}"
-                                                   class="btn l-khaki"
-                                                ><i class="icon-eye"></i>
-                                                </a>
-                                                <a data-toggle="modal"
-                                                   data-target="#edit-modal"
-                                                   class="btn l-blue"
-                                                   data-id="{{ $item->id }}"
-                                                   data-name="{{ $item->name }}"
-                                                   data-desctiptioin="{{ $item->description }}"
-                                                   data-category="{{ $item->subcategory->name }}"
-                                                   data-image="{{ $item->brand_logo }}"
-                                                ><i class="icon-pencil"></i>
-                                                </a>
-                                                <a class="btn l-amber" onclick="showCancelMessage({{ $item->id }}); event.preventDefault();"><i class="icon-trash" ></i></a>
-                                                <form id="delete-data-{{ $item->id }}" action="{{ route('app.brand.destroy', $item->id) }}" method="post" style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
                     </div>
                 </div>
-        </div>
-    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -102,63 +51,51 @@
     <div class="modal fade" id="add-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <form action="{{ route('app.brand.store') }}" method="post" enctype="multipart/form-data">
+                <form id="add-brand" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="header">
-                            <h3>Add Sub Category </h3>
+                            <h3>Add Brands</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                
                                 <div class="col-6">
                                    <div class="form-group">
                                         <label for="">Brand's Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Enter Brand's Name...">
                                     </div>
                                 </div>
-
-                                <div class="col-6">
-                                     <div class="form-group">
-                                        <label for="">Brand Logo</label>
-                                   <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text">Upload</span>
-                                      </div>
-                                      <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                      </div>
+                                <div class="col-6"style="margin-top: 27px;">
+                                    <div class="input-group">
+                                       <span class="input-group-btn">
+                                         <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                           <i class="fa fa-picture-o"></i> Choose
+                                         </a>
+                                       </span>
+                                        <input id="thumbnail" class="form-control" type="text" name="brand_logo">
                                     </div>
                                 </div>
-                                </div>
-                            
-                            <div class="col-12">
-                               <div class="form-group">
+                                <div class="col-12">
+                                   <div class="form-group">
                                         <h4 class="card-title mb-5">Brand's Details</h4>
                                         <textarea name="description" class="form-control" id="descriptoin" rows="5" placeholder="Enter some details for this brand's..."></textarea>
-                               </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-8 ">
-                             <div class="form-group">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                                  <label class="form-check-label" for="gridCheck">
-                                    Check status
-                                  </label>
+                                   </div>
+                                    <div class="form-group mt-3">
+                                        <label class="label">
+                                            <div class="toggle">
+                                                <input class="toggle-state"  name="status" type="checkbox" id="gridCheck" />
+                                                <div class="indicator"></div>
+                                            </div>
+                                            <div class="label-text">Status</div>
+                                        </label>
+                                    </div>
                                 </div>
-                              </div>
 
-                              <button type="submit" class="btn btn-primary">Save</button>
-
-                              <button type="submit" class="btn btn-danger">Cancel</button>
-
+                                <div class="btn-group mt-3">
+                                      <button id="save-brand" class="btn btn-primary">Save</button>
+                                      <button type="submit" class="btn btn-danger">Cancel</button>
+                                </div>
                             </div>
-
-                           
-                            
-                            
                         </div>
                     </div>
                 </form>
@@ -167,50 +104,63 @@
     </div>
 {{--    ----------------------------------------add Modal end modal is here ----------------------------------------}}
 
-{{--    --}}{{-------------------------------------------Show Modal Start modal is here ------------------------------------}}
-    <div class="modal fade" id="show-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+{{--    ----------------------------------------add Modal Start modal is here --------------------------------------}}
+    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="card">
-                    <div class="header">
-                        <h3>Show Sub Category </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-row mb-3">
-                                    <label for="">#id</label>
-                                    <input type="text" disabled id="id" class="form-control" value="">
+                <form id="edit-brand-form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card">
+                        <div class="header">
+                            <h3>Edit Brands</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                   <div class="form-group">
+                                        <label for="">Brand's Name</label>
+                                        <input type="text" name="name" class="form-control" id="name">
+                                        <input type="hidden" name="id" id="editId">
+                                    </div>
+                                </div>
+                                <div class="col-6 " style="margin-top: 27px;">
+                                    <div class="input-group">
+                                       <span class="input-group-btn">
+                                         <a id="elfm" data-input="thumbnaile" data-preview="holder" class="btn btn-primary">
+                                           <i class="fa fa-picture-o"></i> Choose
+                                         </a>
+                                       </span>
+                                        <input id="thumbnaile" class="form-control" type="text" name="brand_logo">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                   <div class="form-group">
+                                        <h4 class="card-title mb-5">Brand's Details</h4>
+                                        <textarea name="description" class="form-control" id="description" rows="5" placeholder="Enter some details for this brand's..."></textarea>
+                                   </div>
+                                </div>
+                                <div class="col-lg-8 col-md-8 ">
+                                    <div class="form-group mt-3">
+                                        <label class="label">
+                                            <div class="toggle">
+                                                <input class="toggle-state checkUpdatStatus" type="checkbox" id="statusCheck" name="status"/>
+                                                <div class="indicator"></div>
+                                            </div>
+                                            <div class="label-text">Status</div>
+                                        </label>
+                                    </div>
+                                  <button id="save-brand" class="btn btn-primary">Save</button>
+                                  <button  id="cancel"class="btn btn-danger">Cancel</button>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-row mb-3">
-                                    <label for="">Category Name</label>
-                                    <input type="text" disabled id="category" class="form-control" value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <label for="">Sub Category Name</label>
-                            <input type="text" disabled id="sub_category" class="form-control">
-                        </div>
-                        <div class="form-row">
-                            <label for="">Sub Category Description's</label>
-                            <textarea name="description" id="description" class="form-control" rows="3" disabled></textarea>
-                        </div>
-                        <div class="form-row">
-                            <label for="">Brand Image</label><br>
-                            <img id="brand_image" class="media-object"/>
-                        </div>
-                        <div class="btn-group mt-3">
-                            <button type="button"  data-dismiss="modal" class="btn l-parpl">Cancel</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-{{--    --}}{{-----------------------------------------add Modal end modal is here -----------------------------------------}}
+{{--    ----------------------------------------add Modal end modal is here ----------------------------------------}}
+
 
 <div>
 
@@ -263,44 +213,170 @@
 
 @endsection
 @push('js')
-
-    <script src="https://unpkg.com/file-upload-with-preview@4.1.0/dist/file-upload-with-preview.min.js"></script>
-    <script src="{{ asset('assets/admin/vendor/select2/select2.min.js') }}"></script>
-    <script>
-        $("#max-select").select2();
-
-        $('#show-modal').on('show.bs.modal', function (event){
-
-           var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var name = button.data('name')
-            var desctiptioin = button.data('desctiptioin')
-            var brand_image = button.data('image')
-
-            var modal = $(this)
-            modal.find('#id').val(id)
-            modal.find('#category').val(category)
-            modal.find('#sub_category').val(name)
-            modal.find('#description').val(desctiptioin)
-            $("#brand_image").attr("src",brand_image);
-
-        });
-        $('#edit-modal').on('show.bs.modal', function (event){
-           var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var name = button.data('name')
-            var desctiptioin = button.data('desctiptioin')
-            var category = button.data('category')
-            var modal = $(this)
-            modal.find('#id').val(id)
-            modal.find('#sub_category').val(name)
-            modal.find('#description').val(desctiptioin)
-        });
-        var upload = new FileUploadWithPreview("myUniqueUploadId");
-    </script>
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script>
         $('#lfm').filemanager('image');
+        $('#elfm').filemanager('image');
+
+
+        $('#cancel').on('click', function(e){
+            e.preventDefault();
+            $('.modal').modal('hide');
+        })
+
+        //ajax setup
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        //add brand is here
+        $('#add-brand').submit(function(e){
+            event.preventDefault();
+            $.ajax({
+                url: "{{ route('app.brand.store') }}",
+                method: "POST",
+                data: new FormData(this),
+                dataType: 'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data){
+                    $('#add-modal').modal('hide');
+                    table.ajax.reload();
+                }
+            });
+        });
+
+        //show brand is here
+        var table = $('#show-table').DataTable({
+            ajax: "{{ route('app.brand.all.show') }}",
+
+            columns:[
+                {data: 'SrNo',
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                {'data': 'name'},
+                {'data' : 'brand_logo',
+                    render: function (data, row, type){
+                        return `<img src="${data}"  class="" width="50" height="50" />`
+                    },
+                },
+                {'data' : 'description',
+                    render: function (data, row, type){
+                        return data
+                    },
+                },
+                {
+                    'data' : 'status',
+                    render:function (data, row, type){
+                        if(data == 'on'){
+                            return `<span class="badge l-blue">Active</span>`
+                        }else{
+                            return `<span class="badge l-coral">Inactive</span>`
+                        }
+                    }
+                },
+                {'data' : 'id',
+                    render:function(data, row, type){
+                        return `
+                                <a onclick="editBrand(${data})" id="editBrand" class="btn btn-sm  l-turquoise text-white">
+                                    <i class="icon-pencil" ></i>
+                                </a>
+                                <a onclick="deleteBrand(${data})" class="btn btn-sm l-coral text-white">
+                                    <i class="icon-trash" ></i>
+                                </a>`;
+                    }
+                },
+
+            ]
+        });
+
+        //edit brad is here
+        function editBrand(id){
+            if (id != null){
+                $.ajax({
+                    url:"{{ route('app.brand.edit') }}",
+                    dataType: "JSON",
+                    data:{id: id,},
+                    type: "POST",
+                    success: function(res){
+                        $('#edit-modal').modal('show');
+                        $('#name').val(res.brand.name);
+                        $('#editId').val(res.brand.id);
+                        $('#thumbnaile').val(res.brand.brand_logo);
+                        $('#description').val(res.brand.description);
+                        if (res.brand.status === 'on'){
+                            $('#statusCheck').prop('checked', true)
+                        }else{
+                            $('#statusCheck').prop('checked', false)
+                        }
+                    }
+                });
+            }
+        }
+
+        //update brand is here
+        $('#edit-brand-form').submit(function(e){
+            e.preventDefault();
+            var data = $(this).serializeArray();
+            if ($('.checkUpdatStatus').is(':checked') == true){
+                data.push({name:'status', value:'on'});
+            }else{
+                data.push({name:'status', value:''});
+            }
+            $.ajax({
+               url: "{{ route('app.brand.update') }}",
+                type:"POST",
+               dataType: "JSON",
+               data:data,
+               success: function (res){
+                   if (res.code === 200){
+                       table.ajax.reload();
+                       $('#edit-modal').modal('hide');
+                   }
+               }
+            });
+        });
+
+        //delete brand is here
+        function deleteBrand(id){
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#dc3545",
+                confirmButtonText: "Delete",
+                cancelButtonText: "Cancel",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    if (id != null){
+                        $.ajax({
+                            url: "{{ route('app.brand.destroy',"")}}/"+id,
+                            data:{id:id},
+                            dataType:"JSON",
+                            type:"DELETE",
+                            success: function (res){
+                                if(res.code == 200){
+                                    swal({title: "Success!", text: "Brand Delete Successfully Done...", type: "success"},function() {
+                                        table.ajax.reload();
+                                    })
+                                }
+                            }
+                        });
+                    }
+                }else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                }
+            });
+        }
+
     </script>
 
 @endpush

@@ -267,7 +267,9 @@
                        $('#description').val(res.data.description);
                        var optoin = res.data.category_id;
                        $(`#cat-select option[value='${optoin}']`).attr('selected','selected');
+
                       // var std =  $('[select option]').val();
+
                        if (res.data.status === 'active'){
                            $('#statusCheckE').prop('checked', true)
                        }else{
@@ -279,7 +281,6 @@
         });
 
         //update sub category
-
         $('#updateBtn').on('click', function (e){
             e.preventDefault();
             var data = $('#updateSCat').serializeArray();
@@ -323,10 +324,10 @@
                             id:e,
                         },
                         success: function (res){
-                            if(res.code == 200){
-                                swal({title: "Success!", text: "Sub Category Delete Successfully Done...", type: "success"},function() {
-                                table.ajax.reload();
-                            })
+                                if(res.code == 200){
+                                    swal({title: "Success!", text: "Sub Category Delete Successfully Done...", type: "success"},function() {
+                                    table.ajax.reload();
+                                })
                             }
                         }
                     })

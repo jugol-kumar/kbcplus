@@ -24,10 +24,9 @@ class CategoryController extends Controller
     public function getCategory(){
         $categories = Category::all();
 
-        
+
         return response()->json([
             "data"=> $categories
-
           ]);
     }
 
@@ -48,9 +47,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
+    {
 
-      
+
        // dd($request);
         $validate = Validator::make($request->all(), [
             'name' => 'required|max:50',
@@ -66,20 +65,20 @@ class CategoryController extends Controller
            'icon_class' => $request->icon_class,
            'description' => $request->description,
            'status' => $request->status
-             
+
         ]);
         if($category){
 
 
          return response()->json([
-             'code'=>200, 
+             'code'=>200,
              'status' => true,
              'data' => $category
 
          ]);
         }else{
             return response()->json([
-                'code'=>500,  
+                'code'=>500,
                 'status' => false,
                 'data' => 'Data Insert Failed'
             ]);
@@ -106,7 +105,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
-    {   
+    {
        return response()->json($category);
     }
 
@@ -119,13 +118,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request , $id)
     {
-        
+
          $category = Category::findOrFail($request->cat_id);
-         
+
          $category->name = $request->name?$request->name:$category->name;
          $category->icon_class = $request->icon_class?$request->icon_class: $category->icon_class;
          $category->description = $request->description?$request->description:$category->description;
-         
+
          if ($request->status == 'inactive') {
              $category->status = 'inactive';
          }else{
@@ -142,7 +141,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {  
+    {
         $cat = Category::FindOrFail($id);
         dd($cat);
     }

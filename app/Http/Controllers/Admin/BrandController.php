@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -27,6 +28,13 @@ class BrandController extends Controller
         return view('admin.brand.index', compact('brands', 'subCats'));
     }
 
+    public function allBrand(){
+        $brands = Brand::all();
+        return response()->json([
+           'data' => $brands,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,52 +52,17 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-    private function imageupload($request){
-
-        if ($request->hasFile('brand_logo')) {
-            //main file name is here
-            $quotenameWithExt = $request->file('brand_logo')->getClientOriginalName();
-
-            //main file extension is here
-            $filenamewithextension = $request->file('brand_logo')->getClientOriginalExtension();
-
-            //orginial file name is here
-            $filename = pathinfo($quotenameWithExt, PATHINFO_FILENAME);
-
-            //file name slug version is here
-            $slugName = Str::slug($request->name);
-            $orginialFileName = $slugName.'-'.uniqid().'.'.$filenamewithextension;
-            Storage::put('public/brands/'. $orginialFileName, fopen($request->file('brand_logo'), 'r+'));
-            //Resize image here
-            $thumbnailpath = public_path('storage/brands/'.$orginialFileName);
-            $img = Image::make($thumbnailpath)->resize(140, 140);
-            $img->save($thumbnailpath);
-            return $orginialFileName;
-        }
-    }
-
     public function store(Request $request)
     {
-        $validate = Validator::make($request->all(), [
-            'sub_category_id' => 'required|integer',
-            'name' => 'required|max:50',
-            'description' => 'max:150',
-            'brand_logo' => 'image|mimes:jpg,png',
-        ]);
-        if ($validate->fails()){
-            return back()->with('toast_warning', $validate->messages()->all()[0])->withInput();
+        $data = $request->all();
+        $check = Brand::create($data);
+        if ($check){
+            return response()->json([
+                'code' => 200,
+                'msg' => 'Brand Save Successfully Done...'
+            ]);
         }
-        $logoName = $this->imageupload($request);
 
-        Brand::create([
-           'subcategory_id' => $request->sub_category_id,
-            'name' => $request->name,
-            'description' => $request->description,
-            'brand_logo' => $logoName,
-        ]);
-
-        return back()->with('toast_success', 'Brand Added Successfully...');
     }
 
     /**
@@ -109,6 +82,14 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
+
+    public function editBrand(Request $request){
+        $brand = Brand::where('id', $request->id)->first();
+        return response()->json([
+           'brand' =>$brand
+        ]);
+    }
+
     public function edit(Brand $brand)
     {
         //
@@ -121,6 +102,25 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
+
+    public function updateBrand(Request $request){
+        $brand = Brand::where('id', $request->id)->first();
+        $data = $request->all();
+        $status = $brand->update($data);
+        if ($status){
+            return response()->json([
+               'code' => 200,
+               'msg' => 'Your Brand Update Successfully Done...'
+            ]);
+        }else{
+            return response()->json([
+                'code' => 500,
+                'msg' => 'Have an error...'
+            ]);
+        }
+
+    }
+
     public function update(Request $request, Brand $brand)
     {
         //
@@ -134,8 +134,17 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        Storage::delete('public/brands/'.$brand->brand_logo);
-        $brand->delete();
-        return back()->with('toast_success', 'Brand Deleted Successfully...');
+        $status = $brand->delete();
+        if ($status){
+            return response()->json([
+                'code' => 200,
+                'msg' => 'Brand Deleted Successfully Done..'
+            ]);
+        }else{
+            return response()->json([
+                'code' => 200,
+                'msg' => 'Have an error occed..'
+            ]);
+        }
     }
 }
