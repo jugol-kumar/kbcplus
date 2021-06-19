@@ -31,6 +31,11 @@ Route::get('/get-category', [CategoryController::class, 'getCategory']);
 
 //subcategory route
 Route::resource('subcategory', SubCategoryController::class);
+Route::get('/sub-category', [SubCategoryController::class, 'allSubCategory'])->name('subcategory.api');
+Route::post('/edit-sub-category', [SubCategoryController::class, 'editSubCat'])->name('subcategory.edit');
+Route::post('/update-sub-category', [SubCategoryController::class, 'update'])->name('subcategory.update');
+Route::post('/delete-sub-category', [SubCategoryController::class, 'destroy'])->name('subcategory.delete');
+
 
 //Brand route
 Route::resource('brand', BrandController::class);

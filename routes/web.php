@@ -97,8 +97,8 @@ Route::group([
 //admin side category and sub category ajax route
 Route::get('/category/id/{id}', [AjaxController::class, 'subCategoryByCategoryId']);
 Route::get('/sub-category/id/{id}', [AjaxController::class, 'brandsBySubCategoryId'] );
-   
 
+//subcategory get api
 
 
 Route::group([

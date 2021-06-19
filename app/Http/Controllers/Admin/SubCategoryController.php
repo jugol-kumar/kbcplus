@@ -23,6 +23,11 @@ class SubCategoryController extends Controller
         return view('admin.subcetagory.index', compact('subCategories', 'categories'));
     }
 
+    public function allSubCategory(){
+        $subCategories = SubCategory::with('category')->get();
+        return response()->json(['data' => $subCategories]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,20 +47,23 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
 
-        $validate = Validator::make($request->all(), [
-            'name' => 'required|max:50',
-            'description' => 'max:150',
-            'category_id' => 'integer'
-        ]);
-        if ($validate->fails()){
-            return back()->with('toast_warning', $validate->messages()->all()[0])->withInput();
+        $data = $request->all();
+        $subcat = SubCategory::create($data);
+        if($subcat){
+            return response()->json([
+                'code'=>200,
+                'status' => true,
+                'data' => $subcat
+
+            ]);
+        }else{
+            return response()->json([
+                'code'=>500,
+                'status' => false,
+                'data' => 'Data Insert Failed'
+            ]);
         }
 
-        SubCategory::create([
-            'category_id' => $request->category_id,
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
         return back()->with('toast_success', 'Sub Category Added Successfully...');
     }
 
@@ -77,9 +85,25 @@ class SubCategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubCategory $subCategory)
+    public function edit(Request $request)
     {
-        //
+        return $request;
+    }
+
+    public function editSubCat(Request $request){
+        $sCat = SubCategory::findOrFail($request->id);
+        if ($sCat){
+            return response()->json([
+                'code' => 200,
+                'data' => $sCat,
+            ]);
+        }else{
+            return response()->json([
+                'code' => 500,
+                'msg' => "Data Not Founded.",
+            ]);
+        }
+
     }
 
     /**
@@ -91,24 +115,22 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request)
     {
-
-        $validate = Validator::make($request->all(), [
-            'name' => 'required|max:50',
-            'description' => 'max:150',
-            'category_id' => 'integer'
-        ]);
-        if ($validate->fails()){
-            return back()->with('toast_warning', $validate->messages()->all()[0])->withInput();
+        $data = $request->all();
+        $scat = SubCategory::where('id', $request->id)->update($data);
+        if ($scat){
+            return response()->json([
+                'code' => 200,
+                'data' => $scat,
+            ]);
+        }else{
+            return response()->json([
+                'code' => 500,
+                'msg' => "Data Not Founded.",
+            ]);
         }
-
-        $subCategory = SubCategory::findOrFail($request->id);
-        $subCategory->update([
-            'category_id' => $request->category_id,
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
-        return back()->with('toast_success', 'Sub Category Updated Successfully...');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -116,10 +138,22 @@ class SubCategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $sCategory = SubCategory::findOrFail($id);
-        $sCategory->delete();
-        return back()->with('toast_success', 'Sub Category Delete Successfully...');
+
+        $sCategory = SubCategory::findOrFail($request->id);
+        $status = $sCategory->delete();
+
+        if ($status){
+            return response()->json([
+                'code' => 200,
+                'data' => $status,
+            ]);
+        }else{
+            return response()->json([
+                'code' => 500,
+                'msg' => "Data Not Founded.",
+            ]);
+        }
     }
 }

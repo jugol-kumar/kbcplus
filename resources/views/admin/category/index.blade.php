@@ -37,7 +37,7 @@
                                     </tr>
                                     </tfoot>
                                     <tbody id="showResult">
-                                       
+
                                     </tbody>
                                 </table>
                             </div>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="card-body">
                         <form  id="categoryForm" >
-                           
+
                             <div class="form-row mb-3">
                                 <label for="">Category Name</label>
                                 <input type="text" name="name" id="name" placeholder="Enter Category Name..." class="form-control">
@@ -112,12 +112,11 @@
                     </div>
                     <div class="card-body">
                         <form  id="categoryUpdateForm"  >
-                           
                             <input type="hidden" name="cat_id" id="cat_id">
                             <div class="form-row mb-3">
                                 <label for="">Category Name</label>
                                 <input type="text" name="name" id="u_name" placeholder="Enter Category Name..." class="form-control">
-                                
+
                                 <small class="text-danger" style="display: none;" id="nameValid">Name field must not be empty !</small>
                             </div>
                             <div class="form-row mb-3">
@@ -180,7 +179,7 @@
 
 
 
-          
+
 
 
         })
@@ -207,8 +206,8 @@
           $('#add-modal').modal('hide');
        }
 
-   
-        
+
+
        $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -223,12 +222,12 @@
           $("#description").val('')
           $('#add-modal').modal('show');
        }
-     // Add Model Close 
+     // Add Model Close
      $("body").delegate('#addModalClose', 'click', function(){
         addModalReset();
      })
-    
-    // Edit Category 
+
+    // Edit Category
 
            $("body").delegate('.edit-button','click', function(){
             var c_id = $(this).data('id');
@@ -244,18 +243,16 @@
                     $("#u_icon_class").val(response.icon_class)
                     $("#u_description").val(response.description)
                     var checkBox = $("#editCheck").val(response.status)
-
                     if (response.status == 'active') {
                         $('#editCheck').prop('checked', true);
                     }else{
                           $('#editCheck').prop('checked', false);
                     }
-
                     $('#edit-modal').modal('show');
-                    
+
                 }
             })
-            
+
            });
 
 
@@ -265,7 +262,7 @@
            });
 
 
-   // Category Add 
+   // Category Add
         $('#saveBtn').click( function (e) {
 
             e.preventDefault();
@@ -277,8 +274,8 @@
                     }else{
                           formData.push({name:'status', value:'inactive'});
                     }
-           
-             
+
+
                  $.ajax({
 
                       data: formData,
@@ -294,7 +291,6 @@
 
                          if(data.code == 200) {
                                table.ajax.reload();
-                            
                                $('.modal-title').html('');
                                $('#cat_id').val('');
                                $('#add-modal').modal('hide');
@@ -302,14 +298,14 @@
                             }
 
                       },
-                      
+
                       error: function (data) {
                           console.log('Error:', data);
                           $('#saveBtn').html('Save Changes');
                       }
                   });
-            
-                
+
+
     });
 
 
@@ -325,14 +321,14 @@
            var desctiptioin = $("#u_description").val();
            var data = $('#categoryUpdateForm').serializeArray();
 
-           
-         
+
+
             if ( $("#editCheck").is(':checked') == true) {
                  data.push({name:'status', value:'active'});
             }else{
                   data.push({name:'status', value:'inactive'});
             }
-           
+
 
 
            if (name == '') {
@@ -359,11 +355,11 @@
             })
            }
         })
-         
+
 
 
          // Delete category
-     
+
      $('body').delegate('.delete-button', 'click', function(e){
         e.preventDefault();
         var id = $(this).data('id');
@@ -385,14 +381,14 @@
                 url:`/app/delete/category/${id}`,
                 // data:{_token:token, id:id},
                 type: 'GET',
-                
+
                 success: function (data) {
 
-                
+
                     swal({title: "Updated!", text: "yourText", type: "success"},function() {
                                  table.ajax.reload();
                         })
-                    
+
 
                 }
 
@@ -432,7 +428,7 @@
                     }
                  }
                  },
-                 {'data': 'created_at', 
+                 {'data': 'created_at',
                    render: function(data, type, row){
 
                      var date =  new Date(data);
@@ -473,7 +469,7 @@
                      }
 
                  },
-                
+
 
 
 
@@ -485,6 +481,6 @@
 
     </script>
 
-    
+
 
 @endpush
