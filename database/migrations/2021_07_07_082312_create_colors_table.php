@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductTagsTable extends Migration
+class CreateColorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateProductTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_tags', function (Blueprint $table) {
+        Schema::create('colors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id');
-            $table->string('tag_name');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+
+            $table->string('color')->nullable();
+            $table->string('extraUrl')->nullable();
+            $table->string('urlSlug')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateProductTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_tags');
+        Schema::dropIfExists('colors');
     }
 }

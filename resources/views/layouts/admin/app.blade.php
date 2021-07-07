@@ -29,12 +29,13 @@
 
     <link rel="stylesheet" href="{{ asset('assets/admin/vendor/select2/select2.css') }}">
 
+{{--    <link rel="stylesheet" href="{{ asset('assets/admin/css/button.css') }}">--}}
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/color_skins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/background-gradient.css') }}">
 
- 
+
 
     {{--  Extendable css  --}}
 
@@ -71,7 +72,28 @@
     @include('layouts.admin.pertials.header')
     @include('layouts.admin.pertials.sidebar')
     @yield('content')
+
 </div>
+{{-- <div class ="frame">--}}
+{{--     <a href="#" class="btn">--}}
+{{--         <i class="fab fa-facebook-f" style="color: #3b5998;"></i>--}}
+{{--     </a>--}}
+{{--     <a href="#" class="btn">--}}
+{{--         <i class="fab fa-twitter" style="color: #00acee;"></i>--}}
+{{--     </a>--}}
+{{--     <a href="#" class="btn">--}}
+{{--         <i class="fab fa-dribbble" style="color: #ea4c89;"></i>--}}
+{{--     </a>--}}
+{{--     <a href="#" class="btn">--}}
+{{--         <i class="fab fa-linkedin-in" style="color:#0e76a8;"></i>--}}
+{{--     </a>--}}
+{{--     <a href="#" class="btn">--}}
+{{--         <i class="fab fa-get-pocket" style="color:#ee4056;"></i>--}}
+{{--     </a>--}}
+{{--     <a href="#" class="btn">--}}
+{{--         <i class="far fa-envelope"></i>--}}
+{{--     </a>--}}
+{{-- </div>--}}
 <script
     src="https://code.jquery.com/jquery-3.6.0.js"
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="

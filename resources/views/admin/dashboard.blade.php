@@ -1,5 +1,8 @@
 @extends('layouts.admin.app')
-
+@push('css')
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/button.css') }}">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+@endpush
 
 @section('content')
     <div id="main-content">
@@ -78,8 +81,6 @@
             @foreach(Auth::user()->roles as $role)
                 {{ $role->name }}
             @endforeach
-
-
         </div>
     </div>
 @endsection

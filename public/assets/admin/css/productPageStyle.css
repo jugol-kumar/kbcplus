@@ -1,0 +1,131 @@
+
+.btn-style{
+    position: absolute;
+    transform: translate3d(0px, 35px, 0px);
+    top: 0px;
+    left: 0px;
+    will-change: transform
+}
+.bg-btn-color {
+    box-shadow: 0px 0px 38px -14px #eceba7 inset !important;
+}
+.tax-input{
+    width: 250px;
+    height: 36px;
+    border-right: none;
+    border-radius: .25rem 0px 0px .25rem;
+}
+.tax-type{
+    width: 120px;
+    float: right;
+    margin: -36px 0px;
+    border-left: none;
+    border-radius: 0px .25rem .25rem 0px;
+}
+
+
+/*    this style for product variation sections*/
+.form-control-color{
+    border:1px solid #ced4da;
+}
+.form-control-color,.optionInput{
+    border-right: none;
+    border-radius: 0px;
+}
+.add_button,.add_child_button,.add_child_button,.remove_button,.btn-outline-secondary{
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-radius: 0px;
+}
+.btn-check:focus+.btn-outline-secondary, .btn-outline-secondary:focus {
+    box-shadow: none;
+}
+.btn-check:active+.btn-outline-secondary:focus, .btn-check:checked+.btn-outline-secondary:focus, .btn-outline-secondary.active:focus, .btn-outline-secondary.dropdown-toggle.show:focus, .btn-outline-secondary:active:focus {
+    box-shadow: none;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: 1px solid #ced4da;
+    outline: 0;
+}
+.select2-container .select2-selection--multiple {
+    box-sizing: border-box;
+    display: block;
+    min-height: 40px;
+    -webkit-user-select: none;
+}
+.select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 1px solid #ced4da;
+    cursor: text;
+    border-radius: 0px !important;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    position: relative;
+}
+.select2 select2-container select2-container--default select2-container--above select2-container--focus
+{
+    width: 223.109px;
+    max-height: 40px;
+    overflow-y: initial;
+}
+.select2 select2-container select2-container--default select2-container--focus select2-container--below{
+    width: 223.109px;
+    max-height: 40px;
+    overflow-y: initial;
+}
+
+.card-style-top{
+    border: none;
+    box-shadow: 1px 1px 24px -2px #e0e0e0 inset, 0px 2px 14px 0px #000000;
+}
+.card-style{
+    border: none;
+    box-shadow: 1px 1px 24px -2px #e0e0e0 inset, 0px 2px 14px 0px #000000;
+}
+
+.custom-file-container__image-preview{
+    overflow-x: auto;
+    max-height: 100px;
+}
+.form-control-color {
+    max-width: 3rem;
+    height: auto;
+    padding: 0.375rem;
+}
+.form-control-color:not(:disabled):not([readonly]) {
+    cursor: pointer;
+}
+.form-control-color::-moz-color-swatch {
+    height: 1.5em;
+    border-radius: 0.25rem;
+}
+.form-control-color::-webkit-color-swatch {
+    height: 1.5em;
+    border-radius: 0.25rem;
+}
+
+.indicator-change {
+    height: 100%;
+    width: 200%;
+    background: #53e7ef;
+    border-radius: 15px;
+    transform: translate3d(-75%, 0, 0);
+    transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+    box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+}
+.indicator-change1 {
+    height: 100%;
+    width: 200%;
+    background: #ef537f;
+    border-radius: 15px;
+    transform: translate3d(-75%, 0, 0);
+    transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+    box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+}
+
+
+@media (min-width: 992px){
+    .modal-lg {
+        max-width: 1000px;
+    }
+}

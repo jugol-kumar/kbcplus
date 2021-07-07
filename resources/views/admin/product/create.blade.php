@@ -232,6 +232,15 @@
                                                                 <option value="0">%</option>
                                                             </select>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label for="">Product Discount</label>
+                                                            <input type="number" name="product_discount" class="form-control" placeholder="Product Tax..." style="width:300px">
+                                                            <select name="discount_type" class="tax-type form-control" id="">
+                                                                <option disabled selected>~~~Select Tax Type~~~</option>
+                                                                <option value="1">Tk</option>
+                                                                <option value="0">%</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

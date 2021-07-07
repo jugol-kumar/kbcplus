@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\CheckproductController;
 use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductAttributeController;
@@ -47,6 +48,10 @@ Route::post('/update-brand', [BrandController::class, 'updateBrand'])->name('bra
 
 //Product route
 Route::resource('product', ProductController::class);
+Route::get('/ajax-category', [ProductController::class, 'getCategoryAjax'])->name('active.category');
+Route::post('/ajax-sub-category', [ProductController::class, 'getSubCategoryAjax'])->name('active.subcategory');
+
+
 
 //Coupons route
 Route::resource('coupon', CuponController::class);
@@ -67,3 +72,32 @@ Route::get('product-attribute-form/{id}', [ProductAttributeController::class, 'i
 
 
 Route::get('delete/category/{id}', [CategoryDeleteController::class, 'deleteCat'])->name('delete.cat');
+
+
+
+
+//check for product variation in this route
+Route::resource('check', CheckproductController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
