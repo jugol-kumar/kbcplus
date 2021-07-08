@@ -16,26 +16,27 @@
                             <div class="row">
                                 <div class="preview col-lg-4 col-md-12">
                                     <div class="preview-pic tab-content">
-                                        <?php $i = 1?>
-                                        @foreach($product->images as $image)
-                                            @if ($i==1)
-                                                <div class="tab-pane active" id="{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid" ></div>
-                                            @else
-                                                <div class="tab-pane" id="{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid"></div>
-                                            @endif
-                                                <?php $i++ ?>
-                                        @endforeach
+
+{{--                                        <?php $i = 1; $product[] = null;?>--}}
+{{--                                        @foreach($product->images as $image)--}}
+{{--                                            @if ($i==1)--}}
+{{--                                                <div class="tab-pane active" id="{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid" ></div>--}}
+{{--                                            @else--}}
+{{--                                                <div class="tab-pane" id="{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid"></div>--}}
+{{--                                            @endif--}}
+{{--                                                <?php $i++ ?>--}}
+{{--                                        @endforeach--}}
                                     </div>
                                     <ul class="preview-thumbnail nav nav-tabs">
-                                        <?php $i=1 ?>
-                                        @foreach($product->images as $image)
-                                            @if ( $i == 1)
-                                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid"></a></li>
-                                            @else
-                                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid"></a></li>
-                                            @endif
-                                                <?php $i++ ?>
-                                        @endforeach
+{{--                                        <?php $i=1 ?>--}}
+{{--                                        @foreach($product->images as $image)--}}
+{{--                                            @if ( $i == 1)--}}
+{{--                                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid"></a></li>--}}
+{{--                                            @else--}}
+{{--                                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{$image->id}}"><img src="{{ asset('storage/product/images') }}/{{ $image->image_name }}" class="img-fluid"></a></li>--}}
+{{--                                            @endif--}}
+{{--                                                <?php $i++ ?>--}}
+{{--                                        @endforeach--}}
                                     </ul>
                                 </div>
                                 <div class="details col-lg-8 col-md-12">
@@ -99,8 +100,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">This Product All Tags</h5>
-                                @foreach ($product->tags as $item)
-                                    <span class="badge badge-danger mt-2">{{ $item->tag_name }}</span>
+                                @foreach ($product->colors as $item)
+                                    <span class="badge badge-danger mt-2">{{ $item->color }}</span>
                                 @endforeach
                             </div>
                         </div>

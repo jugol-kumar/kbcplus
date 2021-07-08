@@ -49,7 +49,13 @@
                                         @foreach($products as $product)
                                             <tr>
                                                 <td>#{{ $i++ }}</td>
-                                                <td><img src="{{ asset("storage/product/1625658625836.jpg") }}" class="rounded-circle" width="50" height="50" alt=""></td>
+                                                <td>
+                                                    @if($product->colors[0]->images[0]->image != null)
+                                                    <img src="{{asset('storage/product')}}/{{$product->colors[0]->images[0]->image}}" class="rounded-circle" width="50" height="50" alt="">
+                                                    @else
+                                                        <img src="{{ config('app.productImage') }}" class="rounded-circle" width="50" height="50" alt="">
+                                                    @endif
+                                                </td>
                                                 <td>{{ $product->title }}</td>
                                                 <td>{{ isset($product->category->name) ? $product->category->name : 'NULL' }}</td>
                                                 <td>{{ isset($product->brand->name) ? $product->brand->name : 'NULL'  }}</td>
