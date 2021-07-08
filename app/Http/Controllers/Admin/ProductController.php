@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('colors')->get();
+        $products = Product::with('colors')->where('deletion_status', 1)->get();
         return view('admin.product.index', compact('products'));
     }
 
@@ -287,7 +287,21 @@ class ProductController extends Controller
     //delete product is here
     public function destroy(Product $product)
     {
-        $product->delete();
+
+
+        //all color gated by product id.
+        $allColorByProductId = Color::where('product_id', $product->id)->get();
+
+        //product color and image delete when product update.
+//        foreach ($allColorByProductId as $color){
+//            foreach ($color->images as $image){
+//                Storage::delete("public/product/{$image->image}");
+//            }
+//            $color->delete();
+//        }
+
+
+        $product->update(['deletion_status' => 0]);
         return back()->with('toast_success', 'Product Deleted Successfully...');
     }
 

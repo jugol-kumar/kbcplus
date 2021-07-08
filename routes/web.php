@@ -32,11 +32,7 @@ Route::group([
 ],
 function (){
 //  invakable controller for home url
-    Route::get('/', HomeController::class);
-
-
-
-
+    Route::get('/', HomeController::class)->name('index');
 });
 
 
