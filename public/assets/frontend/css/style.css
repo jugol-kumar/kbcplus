@@ -587,6 +587,28 @@ span.c-number {
 	justify-content: center;
 }
 
+.view-button{
+    background: linear-gradient(
+        135deg
+        , #eb543b 0%,#fbbf3b 100%);
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 15px;
+    color: white;
+    padding: 5px;
+    font-family: 'Ubuntu';
+    transition: 0.3s all ease;
+}
+.view-button:hover{
+    color: #463b48;
+}
+
+
+/*.osahan-radio .btn{*/
+/*    background-color: red;*/
+/*}*/
+
 .list-card-image a.btn:hover, .list-card-image a.btn:focus {
 	background: #ff6000;
 	color: #ffffff;
@@ -671,7 +693,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 	background: linear-gradient(135deg,  #eb543b 0%,#fbbf3b 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', endColorstr='#fbbf3b',GradientType=1 );
 	border-color: #e4ab2c;
-	
+
 }
 
 .text-success {
@@ -1197,7 +1219,7 @@ label {
 }
 
 .bg-color-head {
-	
+
 background: #eb543b;
 background: -moz-linear-gradient(-45deg,  #eb543b 0%, #fbbf3b 100%);
 background: -webkit-linear-gradient(-45deg,  #eb543b 0%,#fbbf3b 100%);

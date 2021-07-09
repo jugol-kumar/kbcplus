@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ProductDetailsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,17 @@ Route::group([
 function (){
 //  invakable controller for home url
     Route::get('/', HomeController::class)->name('index');
+
+    //  single product details route
+    Route::get('/singel-product/{slug}', [ProductDetailsController::class, 'singleProductDetails'])->name('product.details');
+
+    //  get all size by unique color with ajax
+    Route::post('/size-by-color', [ProductDetailsController::class, 'getSizeByColor'])->name('product.sizebycolor');
+
+    //  get all size by unique color with ajax
+    Route::post('/size-by-price', [ProductDetailsController::class, 'getPriceBySize'])->name('product.sizeByPrice');
+
+
 });
 
 

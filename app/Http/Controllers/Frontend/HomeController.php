@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +16,9 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('frontend.home');
+        $products = Product::where('publication_status', 1)->where('deletion_status',1)->get();
+
+
+        return view('frontend.home', compact('products'));
     }
 }

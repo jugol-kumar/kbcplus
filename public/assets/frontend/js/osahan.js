@@ -84,7 +84,7 @@ $('.recommend-slider2').slick({
   arrows: false,
   dots: true,
   autoplay: true
-  
+
 });
 
 // Recommend Slider
@@ -142,14 +142,14 @@ var $main_nav = $('#main-nav');
   };
 
 // call our plugin
-var Nav = $main_nav.hcOffcanvasNav(defaultOptions);  
+var Nav = $main_nav.hcOffcanvasNav(defaultOptions);
 
 // Dark Mode
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme) {
     document.documentElement.setAttribute('class', currentTheme);
-  
+
     if (currentTheme === 'dark') {
         toggleSwitch.checked = true;
     }
@@ -161,7 +161,7 @@ function switchTheme(e) {
     }
     else {        document.documentElement.setAttribute('class', 'light');
           localStorage.setItem('theme', 'light');
-    }    
+    }
 }
 toggleSwitch.addEventListener('change', switchTheme, false);
 

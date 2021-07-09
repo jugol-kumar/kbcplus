@@ -21,6 +21,8 @@
     <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
 
     <link href="{{ asset('assets/frontend/vendor/sidebar/demo.css') }}" rel="stylesheet">
+
+    @stack('css')
 </head>
 
 <body class="fixed-bottom-padding">
@@ -576,6 +578,7 @@
     <script src="{{  asset('assets/frontend/vendor/slick.min.js') }}"></script>
     <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
         data-cf-settings="0efe8106ad88ff6124858db3-|49" defer=""></script>___scripts_6___
+    @stack('js')
 </body>
 
 </html>

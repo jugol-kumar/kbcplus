@@ -1,6 +1,6 @@
 <div class="bg-white shadow-sm osahan-main-nav">
     <nav class="navbar navbar-expand-lg navbar-light bg-white osahan-header py-0 container">
-        <a class="navbar-brand mr-0" href="home.html"><img class="img-fluid logo-img " src="{{asset('assets/frontend/img/logo.png')}}"></a>
+        <a class="navbar-brand mr-0" href="{{ route('front.index') }}"><img class="img-fluid logo-img " src="{{asset('assets/frontend/img/logo.png')}}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
