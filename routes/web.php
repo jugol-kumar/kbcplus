@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ProductDetailsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::group([
     'as' => 'front.',
 ],
 function (){
-//  invakable controller for home url
+    //  invakable controller for home url
     Route::get('/', HomeController::class)->name('index');
 
     //  single product details route
@@ -44,6 +45,10 @@ function (){
     //  get all size by unique color with ajax
     Route::post('/size-by-price', [ProductDetailsController::class, 'getPriceBySize'])->name('product.sizeByPrice');
 
+
+    //  get all destrict list
+    Route::post('/all-district', [ProductDetailsController::class, 'allDistrict'])->name('get.allDistrict');
+    Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
 
 });
 

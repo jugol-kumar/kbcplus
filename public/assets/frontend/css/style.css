@@ -644,6 +644,24 @@ span.c-number {
     border-color: #ec573b;
 }
 
+
+
+.ss-snackbar.ss-snackbar-success{
+    background-color: rgba(193, 255, 193, 0.84)
+}
+.ss-snackbar.ss-snackbar-warning{
+    background-color: rgba(252, 255, 150, 0.45)
+}
+.ss-snackbar.ss-snackbar-info{
+    background-color: rgba(193, 255, 248, 0.84)
+}
+.ss-snackbar.ss-snackbar-danger{
+    background-color: rgba(255, 143, 143, 0.76)
+}
+
+
+
+
 .bg-success {
 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#fbbf3b+0,5ad363+100 */
 	background: #fbbf3b;

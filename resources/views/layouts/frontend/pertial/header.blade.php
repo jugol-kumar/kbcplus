@@ -57,7 +57,7 @@
             </a>
 
             <div class="dropdown">
-                <a href="#" class="text-dark dropdown-toggle not-drop" id="dropdownMenuNotification"
+                <a href="#" class="text-dark dropdown-toggle not-drop mr-2" id="dropdownMenuNotification"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i
                         class="icofont-notification d-flex align-items-center bg-light rounded-pill p-2 icofont-size border shadow-sm">
@@ -103,10 +103,143 @@
                     </div>
                 </div>
             </div>
+            <div class="dropdown">
+                <a href="#" class="text-dark dropdown-toggle not-drop mr-2" id="dropdownMenuNotification"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i
+                        class="icofont-shopping-cart d-flex align-items-center bg-light rounded-pill p-2 icofont-size border shadow-sm">
+                    </i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-0 osahan-notifications-main"
+                     aria-labelledby="dropdownMenuNotification">
 
-            <a href="cart.html" class="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
-                <i class="icofont-shopping-cart"></i>
-            </a>
+                    <div class="osahan-notifications bg-white border-bottom p-2">
+                        <div class="position-absolute ml-n1 py-2">
+                        <i class="text-white bg-success rounded-pill p-1">50</i></div>
+                        <a href="status_complete.html" class="text-decoration-none text-dark">
+                            <div class="notifiction small">
+                                <div class="ml-3">
+                                    <p class="font-weight-bold mb-1">My Cart</p>
+                                    <p class="small m-0"><i class="icofont-ui-calendar"></i> Total Product...</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+
+                    <div class="bg-white border-bottom">
+                        <div class="cart-items bg-white position-relative border-bottom">
+                            <div class="d-flex  align-items-center">
+                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
+                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+                                    <P class="mb-1">Bread</P>
+                                    <p class="text-muted mb-2">$0.98/kg</p>
+                                    <div class="d-flex align-items-center">
+                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
+                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
+                                            <input type="text" name="quantity" value="1" class="qty form-control">
+                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
+                                        </form>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white border-bottom">
+                        <div class="cart-items bg-white position-relative border-bottom">
+                            <div class="d-flex  align-items-center">
+                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
+                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+                                    <P class="mb-1">This is Single Product</P>
+                                    <p class="text-muted mb-2">$0.98/kg</p>
+                                    <div class="d-flex align-items-center">
+                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
+                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
+                                            <input type="text" name="quantity" value="1" class="qty form-control">
+                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
+                                        </form>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white border-bottom">
+                        <div class="cart-items bg-white position-relative border-bottom">
+                            <div class="d-flex  align-items-center">
+                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
+                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+                                    <P class="mb-1">Second Single Product</P>
+                                    <p class="text-muted mb-2">$0.98/kg</p>
+                                    <div class="d-flex align-items-center">
+                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
+                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
+                                            <input type="text" name="quantity" value="1" class="qty form-control">
+                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
+                                        </form>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white border-bottom">
+                        <div class="cart-items bg-white position-relative border-bottom">
+                            <div class="d-flex  align-items-center">
+                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
+                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+                                    <P class="mb-1">Product details is here </P>
+                                    <p class="text-muted mb-2">$0.98/kg</p>
+                                    <div class="d-flex align-items-center">
+                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
+                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
+                                            <input type="text" name="quantity" value="1" class="qty form-control">
+                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
+                                        </form>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white border-bottom">
+                        <div class="cart-items bg-white position-relative border-bottom">
+                            <div class="d-flex  align-items-center">
+                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
+                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+                                    <P class="mb-1">Bread</P>
+                                    <p class="text-muted mb-2">$0.98/kg</p>
+                                    <div class="d-flex align-items-center">
+                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
+                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
+                                            <input type="text" name="quantity" value="1" class="qty form-control">
+                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
+                                        </form>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="osahan-notifications bg-white border-bottom p-2">
+                        <div class="position-absolute ml-n1 py-2">
+                            <i class="text-white bg-success rounded-pill p-1">50</i></div>
+                        <a href="status_complete.html" class="text-decoration-none text-dark">
+                            <div class="notifiction small">
+                                <div class="ml-3">
+                                    <p class="font-weight-bold mb-1 d-inline mr-5">Total</p> 5000$ <br>
+                                    <p class="font-weight-bold mb-1 d-inline mr-5">Sub Total</p> 10000$
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+{{--            <a href="cart.html" class="text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">--}}
+{{--                <i class="icofont-shopping-cart"></i>--}}
+{{--            </a>--}}
+
         </div>
     </nav>
     <div class="bg-color-head">

@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/vendor/slick/slick-theme.min.css') }}" />
 
     <link href="{{asset('assets/frontend/vendor/icons/icofont.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/frontend/css/simpleSnackbar.min.css') }}" rel="stylesheet" type="text/css">
 
     <link href="{{ asset('assets/frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -568,12 +569,12 @@
 
 
     <script src="{{ asset('assets/frontend/vendor/jquery/jquery.min.js') }}" type="0efe8106ad88ff6124858db3-text/javascript"></script>
+    <script src="{{ asset('assets/frontend/js/simpleSnackbar.min.js') }}" type="0efe8106ad88ff6124858db3-text/javascript"></script>
+
+    <script src="{{ asset('assets/frontend/js/toaster.js') }}"></script>
     <script src="{{ asset('assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}" type="0efe8106ad88ff6124858db3-text/javascript"></script>
-
     <script type="0efe8106ad88ff6124858db3-text/javascript" src="{{ asset('assets/frontend/vendor/slick/slick.min.js') }}"></script>
-
     <script type="0efe8106ad88ff6124858db3-text/javascript" src="{{ asset('assets/frontend/vendor/sidebar/hc-offcanvas-nav.js') }}"></script>
-
     <script src="{{ asset('assets/frontend/js/osahan.js') }}" type="0efe8106ad88ff6124858db3-text/javascript"></script>
     <script src="{{  asset('assets/frontend/vendor/slick.min.js') }}"></script>
     <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"

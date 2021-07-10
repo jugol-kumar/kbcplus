@@ -18,16 +18,20 @@
 /*    display: block;*/
 /*}*/
 .img-display{
-    overflow: hidden;
+    width: 500px;
+    overflow: hidden !important;
 }
+
+
 .img-showcase{
     display: flex;
     width: 100%;
     transition: all 0.5s ease;
+
 }
 .img-showcase img{
     min-width: 100%;
-    overflow: auto;
+    overflow: hidden;
     height: 100%;
 }
 .img-select{

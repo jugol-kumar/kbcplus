@@ -142,7 +142,7 @@
                                                         <img src="{{ config('app.productImage')  }}"  class="img-fluid item-img w-100 mb-3" style="max-height: 175px; min-height: 175px;">
                                                     @endif
 
-                                                    <h6>{{ $product->title }}</h6>
+                                                    <p>{{  Str::limit($product->title, 25) }}</p>
                                                     <h6 class="price m-0 text-success">{{ $product->colors[0]->attributes[0]->price != null ? $product->colors[0]->attributes[0]->price : '00' }}/{{ $product->product_unit }}</h6>
                                                     <div class="d-flex align-items-center">
                                                         <a href="{{ route('front.product.details', $product->slug) }}" class="view-button">View Details</a>
