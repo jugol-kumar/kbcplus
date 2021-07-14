@@ -50,19 +50,10 @@
             </div>
         </div>
         <div class="ml-auto d-flex align-items-center">
-
-            <a href="#" data-toggle="modal" data-target="#login"
-               class="mr-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
-                <i class="icofont-login"></i>
-            </a>
-
             <div class="dropdown">
                 <a href="#" class="text-dark dropdown-toggle not-drop mr-2" id="dropdownMenuNotification"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i
-                        class="icofont-notification d-flex align-items-center bg-light rounded-pill p-2 icofont-size border shadow-sm">
-
-                    </i>
+                    <i class="icofont-notification d-flex align-items-center bg-light rounded-pill p-2 icofont-size border shadow-sm"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0 osahan-notifications-main"
                      aria-labelledby="dropdownMenuNotification">
@@ -103,142 +94,128 @@
                     </div>
                 </div>
             </div>
+
             <div class="dropdown">
-                <a href="#" class="text-dark dropdown-toggle not-drop mr-2" id="dropdownMenuNotification"
+                <a href="javascript:void(0)" class="text-dark dropdown-toggle not-drop mr-2" id="dropdownMenuNotification"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i
                         class="icofont-shopping-cart d-flex align-items-center bg-light rounded-pill p-2 icofont-size border shadow-sm">
                     </i>
+                    @if(session('cart'))
+                        <span class="text-white bg-primary cartNotification">{{ session('cart') ? count(session('cart')) : '' }}</span>
+                    @endif
                 </a>
-                <div class="dropdown-menu dropdown-menu-right p-0 osahan-notifications-main"
+                <div class="dropdown-menu dropdown-menu-right p-0 osahan-notifications-main product-cart-dropdrown"
                      aria-labelledby="dropdownMenuNotification">
 
                     <div class="osahan-notifications bg-white border-bottom p-2">
                         <div class="position-absolute ml-n1 py-2">
-                        <i class="text-white bg-success rounded-pill p-1">50</i></div>
-                        <a href="status_complete.html" class="text-decoration-none text-dark">
-                            <div class="notifiction small">
-                                <div class="ml-3">
-                                    <p class="font-weight-bold mb-1">My Cart</p>
-                                    <p class="small m-0"><i class="icofont-ui-calendar"></i> Total Product...</p>
+                            @if(session('cart'))
+                                <a href="javascript:void(0)" id="clearCartSession">
+                                    <span data-toggle="tooltip" data-placement="top" class="text-white bg-danger counter-cart" data-original-title="Clear All Cart Product.." aria-describedby="tooltip587617">
+                                        <i class="icofont-close"></i>
+                                    </span>
+                                </a>
+                            @endif
+                        </div>
+                        <div class="notifiction small">
+                            <div class="ml-3">
+                                <p class="font-weight-bold mb-1">My Cart</p>
+                                <p class="small m-0"><i class="icofont-ui-calendar"></i> Total Product...</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @php($totaPrice = 0)
+                    @if(session('cart'))
+                        <div class="cartItems">
+                        @foreach(session('cart') as $id => $details)
+                            <div class="bg-white border-bottom">
+                                <div class="cart-items bg-white position-relative border-bottom">
+                                    <div class="d-flex  align-items-center">
+                                        <a href="javascript:void(0)"><img src="{{ asset('storage/product') }}/{{ $details['image']  }}" class="img-fluid"></a>
+                                        <a href="javascript:void(0)" class="ml-3 text-dark text-decoration-none w-100">
+                                            <P class="my-1">{{ str_limit($details['title'], 15) }}</P>
+                                            <p class="text-muted mb-2"> &#2547;{{ $details['price'] }} x {{ $details['quantity'] }}</p>
+                                            <?php
+                                                $totaPrice += $details['price'] * $details['quantity']
+                                            ?>
+                                            <span style="width: 15px;height: 15px;background: {{ $details['color'] }}; display: inline-block;"></span>
+                                            <div class="btn-group cart-size">
+                                                @if($details['size'] != null)
+                                                    <label class="btn sizeClass hasSize">{{ $details['size'] }}</label>
+                                                @endif
+                                            </div>
+
+
+                                            <div class="d-flex align-items-center mb-2">
+                                                <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
+                                                    <input type="button" value="-" data-id="{{ $id }}" class="btn btn-success btn-sm cart-quentiy-minus" field="quantity">
+                                                    <input type="text" id="cartQuntityVal" name="quantity" value="{{ $details['quantity'] }}" class="qty form-control">
+                                                    <input type="button" value="+"  data-id="{{ $id }}"  class="btn btn-success btn-sm cart-quentiy-plus" field="quantity">
+                                                </form>
+                                            </div>
+                                            <a href="javascript:void(0)" class="delete-cart-item"data-id="{{ $id }}">
+                                                <i class="icofont-trash cart-item-delete"></i>
+                                            </a>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-
-
-
-                    <div class="bg-white border-bottom">
-                        <div class="cart-items bg-white position-relative border-bottom">
-                            <div class="d-flex  align-items-center">
-                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
-                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                    <P class="mb-1">Bread</P>
-                                    <p class="text-muted mb-2">$0.98/kg</p>
-                                    <div class="d-flex align-items-center">
-                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
-                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
-                                            <input type="text" name="quantity" value="1" class="qty form-control">
-                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
-                                        </form>
-                                    </div>
-                                </a>
-                            </div>
+                        @endforeach
                         </div>
-                    </div>
-                    <div class="bg-white border-bottom">
-                        <div class="cart-items bg-white position-relative border-bottom">
-                            <div class="d-flex  align-items-center">
-                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
-                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                    <P class="mb-1">This is Single Product</P>
-                                    <p class="text-muted mb-2">$0.98/kg</p>
-                                    <div class="d-flex align-items-center">
-                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
-                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
-                                            <input type="text" name="quantity" value="1" class="qty form-control">
-                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
-                                        </form>
+                        <div class="osahan-notifications bg-white border-bottom p-2">
+                            <a href="javascript:void(0)" class="text-decoration-none text-dark">
+                                <div class="notifiction small">
+                                    <div class="ml-3">
+                                        <h6 class="font-weight-bold mb-1">Total<span class="float-right">&#2547; {{ $totaPrice }}</span></h6>
+                                        <h5 class="font-weight-bold mb-1">Total<span class="float-right">&#2547; {{ $totaPrice }}</span></h5>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white border-bottom">
-                        <div class="cart-items bg-white position-relative border-bottom">
-                            <div class="d-flex  align-items-center">
-                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
-                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                    <P class="mb-1">Second Single Product</P>
-                                    <p class="text-muted mb-2">$0.98/kg</p>
-                                    <div class="d-flex align-items-center">
-                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
-                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
-                                            <input type="text" name="quantity" value="1" class="qty form-control">
-                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
-                                        </form>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white border-bottom">
-                        <div class="cart-items bg-white position-relative border-bottom">
-                            <div class="d-flex  align-items-center">
-                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
-                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                    <P class="mb-1">Product details is here </P>
-                                    <p class="text-muted mb-2">$0.98/kg</p>
-                                    <div class="d-flex align-items-center">
-                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
-                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
-                                            <input type="text" name="quantity" value="1" class="qty form-control">
-                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
-                                        </form>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white border-bottom">
-                        <div class="cart-items bg-white position-relative border-bottom">
-                            <div class="d-flex  align-items-center">
-                                <a href="product_details.html"><img src="{{ asset('assets/frontend/img/cart/g1.png') }}" class="img-fluid"></a>
-                                <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                    <P class="mb-1">Bread</P>
-                                    <p class="text-muted mb-2">$0.98/kg</p>
-                                    <div class="d-flex align-items-center">
-                                        <form id="myform" class="cart-items-number d-flex ml-auto" method="POST" action="#">
-                                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
-                                            <input type="text" name="quantity" value="1" class="qty form-control">
-                                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
-                                        </form>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="osahan-notifications bg-white border-bottom p-2">
-                        <div class="position-absolute ml-n1 py-2">
-                            <i class="text-white bg-success rounded-pill p-1">50</i></div>
-                        <a href="status_complete.html" class="text-decoration-none text-dark">
-                            <div class="notifiction small">
-                                <div class="ml-3">
-                                    <p class="font-weight-bold mb-1 d-inline mr-5">Total</p> 5000$ <br>
-                                    <p class="font-weight-bold mb-1 d-inline mr-5">Sub Total</p> 10000$
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                        <a href="{{ route('front.cart.details.index') }}" class="btn btn-block btn-success place-order-button">Place Your Order Now.</a>
+                    @else
+                    <div class="noproductincart">
+                        <i class="icofont-dropbox"></i>
+                        <h5>Your Cart Is Empty!</h5>
                     </div>
-
+                    @endif
                 </div>
             </div>
 
-{{--            <a href="cart.html" class="text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">--}}
-{{--                <i class="icofont-shopping-cart"></i>--}}
-{{--            </a>--}}
+
+            @if(Auth::id())
+
+
+
+                <div class="dropdown mr-3 show">
+                    <a href="#" class="dropdown-toggle text-dark" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <img src="{{ config('app.placeholder') }}" class="img-fluid rounded-circle header-user mr-2"> Hi {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right top-profile-drop" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ route('user.dashboard') }}"><i class="icofont-ui-user" style="margin-right: 5px;"></i>My account</a>
+                        <a class="dropdown-item" href="promos.html"><i class="icofont-sale-discount" style="margin-right: 5px;"></i> Promos</a>
+                        <a class="dropdown-item" href="my_address.html"><i class="icofont-address-book" style="margin-right: 5px;"></i> My address</a>
+                        <a class="dropdown-item" href="terms_conditions.html"><i class="icofont-info-circle" style="margin-right: 5px;"></i> Terms &amp; conditions</a>
+                        <a class="dropdown-item" href="help_support.html"><i class="icofont-phone-circle" style="margin-right: 5px;"></i> Help &amp; support</a>
+                        <a class="dropdown-item" href="help_ticket.html"><i class="icofont-ticket" style="margin-right: 5px;"></i> Help ticket</a>
+                        <a class="dropdown-item" href="javascript:void(0);"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();"><i class="icofont-logout" style="margin-right: 5px;"></i>Logout</a>
+
+                        <form id="logout-form" action="{{ route('user.logout') }}" style="display: none" method="post">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @else
+                <a href="javascript:void(0)" data-toggle="modal" data-target="#login"
+                   class="mr-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
+                    <i class="icofont-login"></i>
+                </a>
+            @endif
 
         </div>
     </nav>
@@ -320,3 +297,4 @@
         </div>
     </div>
 </div>
+

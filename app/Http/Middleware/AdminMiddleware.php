@@ -16,21 +16,23 @@ class AdminMiddleware
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {   
+    {
         if (!Auth::check()){
-            return redirect('login');
+            return  "please Login First";
+//            return redirect('admin/login');
         }
-        
+
 
 
         $user = Auth::user();
         if(Auth::user()->role->slug == 'admin'){
             return $next($request);
         }else{
-            abort(404);
+//            abort(404);
+            return redirect()->route('front.index');
         }
-        
-       
-        
+
+
+
     }
 }

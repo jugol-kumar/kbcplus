@@ -41,28 +41,28 @@ class LoginController extends Controller
 
 
     public function login(Request $request)
-    {   
+    {
         $input = $request->all();
-   
+
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-   
+
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->role->slug == 'admin') {
                 return redirect()->route('app.home');
             }elseif(auth()->user()->role->slug == 'vendor'){
                 return redirect()->route('vendor.dashboard');
-            }elseif(auth()->user()->role->slug == 'customer'){
-                return redirect()->route('customer.dashboard');
+            }elseif(auth()->user()->role->slug == 'user'){
+                return redirect()->route('user.dashboard')->with('msg', auth()->user()->name.' Login Successfully Done');
             }
         }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+            return redirect()->route('front.index')
+                ->with('error','Email-Address And Password Not Matched With Our Record...');
         }
-          
+
     }
 
 

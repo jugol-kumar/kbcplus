@@ -17,13 +17,14 @@ class CustomerMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(!Auth::check()){
-            return redirect()->route('login');
+            return redirect()->route('front.index');
         }
 
-        if(Auth::user()->role->slug == 'customer'){
+        if(Auth::user()->role->slug == 'user'){
             return $next($request);
         }else{
-            abort(404);
+//            abort(404);
+            return redirect()->route('front.index');
         }
 
 

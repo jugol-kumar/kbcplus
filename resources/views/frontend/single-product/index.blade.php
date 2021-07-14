@@ -2,30 +2,6 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/product-details-slider.css') }}">
 
-    <style>
-        #countryList {
-            height: 200px;
-            overflow-y: scroll;
-            margin-top: -14px;
-        }
-        #countryList ul {
-            background-color: #8b7b7b;
-            cursor: pointer;
-            padding: 24px 0px;
-        }
-        #countryList ul li {
-            padding: 7px;
-            margin: 4px 57px;
-            border-radius: 4px;
-            text-align: center;
-            box-shadow: 0px 0px 18px -7px #636363 inset, 0px 0px 9px 0px #ecfff6;
-        }
-        #countryList ul li:first-child {
-            margin-top: 3px;
-        }
-
-    </style>
-
 
     <script>
 
@@ -45,10 +21,6 @@
 @endpush
 @section('content')
     <div class="container">
-        @if(isset($colorImage))
-            {{ $colorImage }}
-        @endif
-
         <div class="row">
             <div class="col-lg-6 imageAppen">
 {{--                <div class="recommend-slider mb-3 appenSliderFiest" >--}}
@@ -119,7 +91,6 @@
                             <i class="icofont-plus m-0 mr-2" ></i> ADD TO CART
                     </button>
 
-
                     <button href="cart.html"{{ $product->colors[0]->attributes[0]->qty == null ? 'disabled' : '' }}
                        class="btn btn2 btn-success p-3 rounded btn-block d-flex align-items-center justify-content-center btn-lg m-0"><i
                             class="icofont-cart m-0 mr-2" ></i> BUY NOW</button>
@@ -168,7 +139,8 @@
 
                                 <p class="font-weight-bold mt-3 mb-0">Product Sku:</p>
                                 <span class="badge" id="checkSque" style="color: #464040;background-color: rgb(255 156 78 / 60%);">
-                                    {{ $product->colors[0]->attributes[0]->sku}}
+                                    {{ $product->colors[0]->attributes[0]->sku }}
+                                    <input type="hidden" value="{{ $product->colors[0]->attributes[0]->id }}" data-id="{{ $product->colors[0]->attributes[0]->id }}">
                                 </span>
                             </div>
                         </div>
@@ -239,11 +211,11 @@
 
                         <div class="bg-white mt-2 " >
                             <div class="d-flex align-items-center">
-                                <a class="ml-auto" href="#">
-                                    <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
+                                <a class="ml-auto" href="javascript:void(0)">
+                                    <form id='myform' class="cart-items-number d-flex" method='POST' action='javascript:void(0)'>
                                         <input type='button' value='-' class='qtyminus btn btn-success btn-sm'
                                                field='quantity'/>
-                                        <input type='text' name='quantity' value='1' class='qty form-control'/>
+                                                <input type='text' name='quantity' value='1' class='qty form-control'/>
                                         <input type='button' value='+' class='qtyplus btn btn-success btn-sm'
                                                field='quantity'/>
                                     </form>
@@ -298,262 +270,265 @@
             </div>
 
 
-        <h5 class="mt-3 mb-3">Maybe You Like this.</h5>
-        <div class="row">
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v1.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Chilli</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$0.8/kg</h6>
-                                    <a data-toggle="collapse" href="#collapseExample1" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample1"
-                                       class="btn btn-success btn-sm ml-auto">+</a>
-                                    <div class="collapse qty_show" id="collapseExample1">
-                                        <div>
-<span class="ml-auto" href="#">
-<form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-<input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>
-<input type='text' name='quantity' value='1' class='qty form-control'/>
-<input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>
-</form>
-</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">5%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v2.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Onion</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$1.8/kg</h6>
-                                    <a data-toggle="collapse" href="#collapseExample2" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample2"
-                                       class="btn btn-success btn-sm ml-auto">+</a>
-                                    <div class="collapse qty_show" id="collapseExample2">
-                                        <div>
-<span class="ml-auto" href="#">
-<form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-<input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>
-<input type='text' name='quantity' value='1' class='qty form-control'/>
-<input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>
-</form>
-</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">5%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v3.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Tomato</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$1/kg</h6>
-                                    <a class="ml-auto" href="#">
-                                        <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm'
-                                                   field='quantity'/>
-                                            <input type='text' name='quantity' value='1' class='qty form-control'/>
-                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm'
-                                                   field='quantity'/>
-                                        </form>
-                                    </a>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">15%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v4.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Cabbage</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$0.8/kg</h6>
-                                    <a data-toggle="collapse" href="#collapseExample3" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample3"
-                                       class="btn btn-success btn-sm ml-auto">+</a>
-                                    <div class="collapse qty_show" id="collapseExample3">
-                                        <div>
-                                            <span class="ml-auto" href="#">
-                                                <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                                    <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>
-                                                    <input type='text' name='quantity' value='1' class='qty form-control'/>
-                                                    <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>
-                                                </form>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v5.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Cauliflower</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$1.8/kg</h6>
-                                    <a data-toggle="collapse" href="#collapseExample4" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample4"
-                                       class="btn btn-success btn-sm ml-auto">+</a>
-                                    <div class="collapse qty_show" id="collapseExample4">
-                                        <div>
-                                            <span class="ml-auto" href="#">
-                                            <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>
-                                            <input type='text' name='quantity' value='1' class='qty form-control'/>
-                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>
-                                            </form>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v6.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Carrot</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$0.8/kg</h6>
-                                    <a data-toggle="collapse" href="#collapseExample5" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample5"
-                                       class="btn btn-success btn-sm ml-auto">+</a>
-                                    <div class="collapse qty_show" id="collapseExample5">
-                                        <div>
-                                            <span class="ml-auto" href="#">
-                                            <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>
-                                            <input type='text' name='quantity' value='1' class='qty form-control'/>
-                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>
-                                            </form>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v7.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Star Anise</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$2.5/kg</h6>
-                                    <a data-toggle="collapse" href="#collapseExample6" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample6"
-                                       class="btn btn-success btn-sm ml-auto">+</a>
-                                    <div class="collapse qty_show" id="collapseExample6">
-                                        <div>
-                                            <span class="ml-auto" href="#">
-                                            <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>
-                                            <input type='text' name='quantity' value='1' class='qty form-control'/>
-                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>
-                                            </form>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 col-md-3 mb-3">
-                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                        <a href="product_details.html" class="text-dark">
-                            <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span>
-                            </div>
-                            <div class="p-3">
-                                <img src="{{asset('assets/frontend/img/listing/v8.jpg')}}"
-                                     class="img-fluid item-img w-100 mb-3">
-                                <h6>Brinjal</h6>
-                                <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$0.8/kg</h6>
-                                    <a data-toggle="collapse" href="#collapseExample7" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample7"
-                                       class="btn btn-success btn-sm ml-auto">+</a>
-                                    <div class="collapse qty_show" id="collapseExample7">
-                                        <div>
-                                            <span class="ml-auto" href="#">
-                                                <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                                    <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>
-                                                    <input type='text' name='quantity' value='1' class='qty form-control'/>
-                                                    <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>
-                                                </form>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div>
+
+{{--        <h5 class="mt-3 mb-3">Maybe You Like this.</h5>--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v1.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Chilli</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$0.8/kg</h6>--}}
+{{--                                    <a data-toggle="collapse" href="#collapseExample1" role="button"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseExample1"--}}
+{{--                                       class="btn btn-success btn-sm ml-auto">+</a>--}}
+{{--                                    <div class="collapse qty_show" id="collapseExample1">--}}
+{{--                                        <div>--}}
+{{--<span class="ml-auto" href="#">--}}
+{{--<form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--<input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>--}}
+{{--<input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--<input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>--}}
+{{--</form>--}}
+{{--</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">5%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v2.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Onion</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$1.8/kg</h6>--}}
+{{--                                    <a data-toggle="collapse" href="#collapseExample2" role="button"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseExample2"--}}
+{{--                                       class="btn btn-success btn-sm ml-auto">+</a>--}}
+{{--                                    <div class="collapse qty_show" id="collapseExample2">--}}
+{{--                                        <div>--}}
+{{--<span class="ml-auto" href="#">--}}
+{{--<form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--<input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>--}}
+{{--<input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--<input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>--}}
+{{--</form>--}}
+{{--</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">5%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v3.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Tomato</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$1/kg</h6>--}}
+{{--                                    <a class="ml-auto" href="#">--}}
+{{--                                        <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm'--}}
+{{--                                                   field='quantity'/>--}}
+{{--                                            <input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm'--}}
+{{--                                                   field='quantity'/>--}}
+{{--                                        </form>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">15%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v4.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Cabbage</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$0.8/kg</h6>--}}
+{{--                                    <a data-toggle="collapse" href="#collapseExample3" role="button"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseExample3"--}}
+{{--                                       class="btn btn-success btn-sm ml-auto">+</a>--}}
+{{--                                    <div class="collapse qty_show" id="collapseExample3">--}}
+{{--                                        <div>--}}
+{{--                                            <span class="ml-auto" href="#">--}}
+{{--                                                <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--                                                    <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                                    <input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--                                                    <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                                </form>--}}
+{{--                                            </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v5.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Cauliflower</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$1.8/kg</h6>--}}
+{{--                                    <a data-toggle="collapse" href="#collapseExample4" role="button"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseExample4"--}}
+{{--                                       class="btn btn-success btn-sm ml-auto">+</a>--}}
+{{--                                    <div class="collapse qty_show" id="collapseExample4">--}}
+{{--                                        <div>--}}
+{{--                                            <span class="ml-auto" href="#">--}}
+{{--                                            <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                            <input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                            </form>--}}
+{{--                                            </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v6.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Carrot</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$0.8/kg</h6>--}}
+{{--                                    <a data-toggle="collapse" href="#collapseExample5" role="button"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseExample5"--}}
+{{--                                       class="btn btn-success btn-sm ml-auto">+</a>--}}
+{{--                                    <div class="collapse qty_show" id="collapseExample5">--}}
+{{--                                        <div>--}}
+{{--                                            <span class="ml-auto" href="#">--}}
+{{--                                            <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                            <input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                            </form>--}}
+{{--                                            </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v7.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Star Anise</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$2.5/kg</h6>--}}
+{{--                                    <a data-toggle="collapse" href="#collapseExample6" role="button"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseExample6"--}}
+{{--                                       class="btn btn-success btn-sm ml-auto">+</a>--}}
+{{--                                    <div class="collapse qty_show" id="collapseExample6">--}}
+{{--                                        <div>--}}
+{{--                                            <span class="ml-auto" href="#">--}}
+{{--                                            <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                            <input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                            </form>--}}
+{{--                                            </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-sm-3 col-md-3 mb-3">--}}
+{{--                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">--}}
+{{--                    <div class="list-card-image">--}}
+{{--                        <a href="product_details.html" class="text-dark">--}}
+{{--                            <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-3">--}}
+{{--                                <img src="{{asset('assets/frontend/img/listing/v8.jpg')}}"--}}
+{{--                                     class="img-fluid item-img w-100 mb-3">--}}
+{{--                                <h6>Brinjal</h6>--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <h6 class="price m-0 text-success">$0.8/kg</h6>--}}
+{{--                                    <a data-toggle="collapse" href="#collapseExample7" role="button"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseExample7"--}}
+{{--                                       class="btn btn-success btn-sm ml-auto">+</a>--}}
+{{--                                    <div class="collapse qty_show" id="collapseExample7">--}}
+{{--                                        <div>--}}
+{{--                                            <span class="ml-auto" href="#">--}}
+{{--                                                <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>--}}
+{{--                                                    <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                                    <input type='text' name='quantity' value='1' class='qty form-control'/>--}}
+{{--                                                    <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity'/>--}}
+{{--                                                </form>--}}
+{{--                                            </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+    </div>
     </div>
 @endsection
 
@@ -561,15 +536,6 @@
 @push('js')
     <script src="{{ asset('assets/frontend/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/product-details.js') }}"></script>
-{{--    <script src="{{ asset('assets/frontend/js/jquery.ez-plus.js') }}"></script>--}}
-    <script src="{{ asset('assets/frontend/js/imageZoom/jquery.elevateZoom-3.0.8.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/imageZoom/jquery.elevatezoom.js') }}"></script>
-    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-    <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/gh/jquery/jquery-mousewheel@3.1.12/jquery.mousewheel.js"></script>
-
     <script type="text/javascript" src="http://chir.ag/projects/ntc/ntc.js"></script>
 <script>
     $(document).ready(function (){
@@ -601,7 +567,6 @@
                     }
                     $('#colorSize').empty();
                     $.each(res.color.attributes, function (key, value) {
-
                         if(value.size != null) {
                             $('#colorSize').append(`
                                 <label class="btn btn-secondary sizeClass hasSize">
@@ -654,6 +619,9 @@
                     success:function (res){
                         if (res){
                             $('.container').attr('disabled', false);
+
+                            $('input[name="quantity"]').val(1);
+
                             $('#sizeByPrice').empty();
                             $('#checkSque').empty();
                             if (res.attr.price != null){
@@ -665,6 +633,10 @@
 
                             if (res.attr.sku != null){
                                 $('#checkSque').append(res.attr.sku);
+                            }
+
+                            if (res.attr.id != null){
+                                $('#checkSque').append(`<input type="hidden" value="${res.attr.id}">`);
                             }
 
                             if (res.attr.qty > 0){
@@ -744,45 +716,45 @@
 
     //     Cart Add
 
-        function callAjax(data){
+        function callAjax(data, token){
             // console.log(data);
             $.ajax({
                 url:`{{route('front.add.to.cart')}}`,
-                data:{data},
+                data:{pro_id: '{{$product->id}}',data, _token:'{{ csrf_token() }}'},
                 type:"POST",
-                success:function (){
-                    alert("success");
+                success:function (res){
+                    if (res.code == 210){
+                        eTost(res.msg);
+                        // location.reload();
+                    }else if(res.code == 200){
+                        sTost(res.msg);
+                        location.reload();
+                    }else{
+                        eTost('Somthing Is Wrong. Please Try Again...');
+                    }
                 }
             })
         }
 
         $('body').on('click', '#addToCart', function (){
+
+            var attrId = $('#checkSque input[type="hidden"]').val();
+
+            var pro_id = `{{ $product->id }}`;
             var color = $('.clorclass').hasClass('hasColor');
-            var pro_id = `{{ $product->id }}`
             var color_id = $("input[name='colors']:checked").val()
+
             var size_id = $("input[name='sizes']:checked").data('id')
-
-
             var size = $('#colorSize .sizeClass').hasClass('hasSize');
 
-            var withColor = {
-                pro_id:pro_id,
-                color_id:color_id,
-                size_id:size_id,
-                _token: '{{csrf_token()}}',
-            }
 
-            var withOutColor = {
-                pro_id:pro_id,
-                color_id:'null',
-                size_id:size_id,
-                _token: '{{csrf_token()}}',
-            }
+            var quentity = $('input[name="quantity"]').val();
 
             if (color==true && size==true){
                 if (color_id != null && size_id != null){
-                    alert(`ajax call with size and color id.. Color id:${color_id} and Size Id: ${size_id}`)
-                    console.log(color_id+'=='+size_id);
+                    // alert(`ajax call with size and color id.. Color id:${color_id} and Size Id: ${size_id}`)
+                    let data = {color_id:color_id, size_id:size_id, qty:quentity, attr_id:attrId};
+                    callAjax(data);
                 }
                 else{
                     if(color_id == null){
@@ -797,8 +769,9 @@
 
             else if(color && size==false){
                 if (color_id != null ){
-                    alert('ajax call with color id. color id is:'+ color_id);
-                    console.log(color_id);
+                    // alert('ajax call with color id. color id is:'+ color_id);
+                    let data = {color_id:color_id, size_id:'null', qty:quentity, attr_id:attrId};
+                    callAjax(data);
                 }else{
                     wTost('please select color...')
                 }
@@ -806,18 +779,18 @@
 
             else if(size && color==false){
                 if (size_id != null){
-                    alert('ajax call with size id. size id is: '+size_id)
-                    console.log(size_id);
+                    // alert('ajax call with size id. size id is: '+size_id)
+                    let data = {color_id:nullColorId, size_id:size_id, qty:quentity, attr_id:attrId};
+                    callAjax(data);
+                    // console.log(size_id);
                 }else{
                     wTost('Please Chose Size First...');
                 }
             }
-
             else{
-                let colorId = null;
-                let sizeId = null;
-                console.log(colorId+'=='+sizeId);
-                alert('call ajax without color and size ok');
+                let data = {color_id:nullColorId, size_id:'null', qty:quentity, attr_id:attrId};
+                callAjax(data);
+                // alert('call ajax without color and size ok');
             }
         })
 

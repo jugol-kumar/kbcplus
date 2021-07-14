@@ -649,6 +649,9 @@ span.c-number {
 .ss-snackbar.ss-snackbar-success{
     background-color: rgba(193, 255, 193, 0.84)
 }
+.ss-snackbar{
+    z-index: 99999999;
+}
 .ss-snackbar.ss-snackbar-warning{
     background-color: rgba(252, 255, 150, 0.45)
 }
@@ -659,8 +662,136 @@ span.c-number {
     background-color: rgba(255, 143, 143, 0.76)
 }
 
+.cartNotification{
+    width: 21px;
+    height: 21px;
+    display: block;
+    padding: 1px 6px;
+    position: relative;
+    border-radius: 15px;
+    border: 1px solid #dee2e6!important;
+    top: -9px;
+    left: -8px;
+}
+
+.cart-size .btn{
+    border-radius: 15px !important;
+    font-size: 9px;
+    margin-top: -8px;
+    border: 1px solid #ff6000;
+    color: #ff6000;
+    background: transparent;
+    padding: 3px 5px;
+
+}
 
 
+.osahan-header .product-cart-dropdrown {
+    min-width: 327px;
+    /*max-height: 500px;*/
+    /*min-height: 500px;*/
+    background: #e8e8e8;
+
+}
+.cartItems{
+    max-height: 320px;
+    overflow-y: auto;
+
+}
+.noproductincart{
+    text-align: center;
+    margin-top: 137px;
+    text-shadow: 1px 0px 0px #353333;
+    color: #8fa299;
+    height: 268px;
+}
+.noproductincart i{
+    font-size: 50px;
+    color: #757474;
+}
+.cart-item-delete{
+    display: block;
+    border-radius: 15px;
+    position: relative;
+    width: 27px;
+    color: #5f5e5e94;
+    padding: 7px;
+    top: -42px;
+    right: 6px;
+    height: 26px;
+    transition: 0.1s all ease;
+}
+
+.cart-item-delete:hover{
+    --bg-opacity: 17;
+    background-color: rgba(269,232,240,var(--bg-opacity));
+}
+
+.counter-cart{
+    width: 30px;
+    height: 30px;
+    display: block;
+    font-size: 25px;
+    padding: 3px 3px;
+    border-radius: 15px;
+}
+
+.place-order-button{
+    border-radius: 0!important;
+    font-size: 25px;
+    padding: 23px 10px;
+    font-weight: bolder;
+}
+
+
+
+
+/* contry list add and show css*/
+
+
+
+#countryList {
+    height: auto;
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-top: -14px;
+}
+#countryList ul {
+    background-color: #8b7b7b;
+    cursor: pointer;
+    padding: 24px 0px;
+}
+#countryList ul li {
+    padding: 7px;
+    margin: 4px 57px;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0px 0px 18px -7px #636363 inset, 0px 0px 9px 0px #ecfff6;
+}
+#countryList ul li:first-child {
+    margin-top: 3px;
+}
+/* contry list add and show css*/
+
+.user-profile-continer{
+    min-width: 180px!important;
+}
+.osahan-profile{
+    line-height: 13px;
+    padding: 6px 29px 4px 0px !important;
+    border: none !important;
+    background: #f1f8ff !important;
+    margin: 4px 3px;
+}
+.profile-item{
+    padding: 5px;
+    margin: 1px 0px;
+    background: #f0f8ff;
+}
+
+.profile-item a{
+    color: #484747;
+}
 
 .bg-success {
 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#fbbf3b+0,5ad363+100 */

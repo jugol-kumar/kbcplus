@@ -1,7 +1,6 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-
     <div class="container-fluid mb-4">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -307,3 +306,21 @@
         </div>
     </div>
 @endsection
+@push('js')
+    @if(Session::has('msg'))
+        <script src="{{ asset('assets/frontend/js/simpleSnackbar.min.js') }}"></script>
+        <script src="{{ asset('assets/frontend/js/toaster.js') }}"></script>
+        <script>
+            sTost('{{Session::get('msg')}}')
+        </script>
+        {{--        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('msg') }}</p>--}}
+    @endif
+    @if(Session::has('error'))
+        <script src="{{ asset('assets/frontend/js/simpleSnackbar.min.js') }}"></script>
+        <script src="{{ asset('assets/frontend/js/toaster.js') }}"></script>
+        <script>
+            eTost('{{Session::get('error')}}')
+        </script>
+        {{--        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('msg') }}</p>--}}
+    @endif
+@endpush

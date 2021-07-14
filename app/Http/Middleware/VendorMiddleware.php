@@ -16,21 +16,22 @@ class VendorMiddleware
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {   
+    {
         if (!Auth::check()){
-            return redirect('login');
+            return redirect()->route('front.index');
         }
-        
+
 
 
         $user = Auth::user();
         if(Auth::user()->role->slug == 'vendor'){
             return $next($request);
         }else{
-            abort(404);
+            return redirect()->route('front.index');
+//            abort(404);
         }
-        
-       
-        
+
+
+
     }
 }
