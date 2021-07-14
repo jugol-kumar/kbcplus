@@ -270,13 +270,13 @@
                                 <label class="form-label">Nickname</label>
                                 <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
                                     <label class="btn btn-outline-secondary active">
-                                        <input type="radio" name="options" class="gold_color" value="Home" id="option1" checked> Home
+                                        <input type="radio" name="options" class="gold_color" value="HOME" id="option1" checked> Home
                                     </label>
                                     <label class="btn btn-outline-secondary">
-                                        <input type="radio" name="options" class="gold_color" value="Work" id="option2"> Work
+                                        <input type="radio" name="options" class="gold_color" value="WORK" id="option2"> Work
                                     </label>
                                     <label class="btn btn-outline-secondary">
-                                        <input type="radio" name="options" class="gold_color" value="Other" id="option3"> Other
+                                        <input type="radio" name="options" class="gold_color" value="OTHER" id="option3"> Other
                                     </label>
                                 </div>
                             </div>
@@ -412,8 +412,8 @@
                                                         <div class="d-flex align-items-center mb-2">
                                                             <p class="mb-0 h6 text-capitalize">${val.delivery_option}</p>
 
-                                                            <p class="mb-0 badge ${val.delivery_option == "home"?'badge-success':'badge-light'} ml-auto">
-                                                                <i class="icofont-check-circled"></i> ${val.delivery_option == "home"?'Default':'Select'}</p>
+                                                            <p class="mb-0 badge ${val.delivery_option == "HOME"?'badge-success':'badge-light'} ml-auto">
+                                                                <i class="icofont-check-circled"></i> ${val.delivery_option == "HOME"?'Default':'Select'}</p>
 
                                                         </div>
                                                         <p class="small text-muted m-0">${val.completed_address}</p>
@@ -488,7 +488,8 @@
                         success: function (res){
                             if (res.code == 200){
                                 sTost('Successfully Done Cart Add...');
-                                window.location.href = "{{ route('front.goto.checkout') }}";
+                                var orderId = res.order_id;
+                                window.location.href = "{{ route('front.goto.checkout','') }}"+'/'+orderId;
                             }else if(res.code == 402){
                                 iTost(res.msg);
                             }

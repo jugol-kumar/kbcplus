@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('received_date')->nullable();
             $table->string('received_time')->nullable();
             $table->enum('order_status', ['pending','conformed','processing','picked','shipped','delivered'])->default('pending');
+            $table->enum('payment_status', ['unpaid','pending','paid','conformed'])->default('unpaid');
             $table->date('date');
             $table->tinyInteger('deletion_status')->default(1);
             $table->timestamps();

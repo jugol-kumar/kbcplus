@@ -56,6 +56,7 @@ class CartController extends Controller
             }else{
 //                $cart[$id] = [
                 $cart[$colorId] = [
+                    'product_id' => $id,
                     'id' => $colorId,
                     "title" => $product->title,
                     "color" => $color->color,

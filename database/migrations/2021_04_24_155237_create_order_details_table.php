@@ -15,12 +15,14 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id');
-            $table->integer('product_id');
-            $table->string('product_name');
-            $table->string('product_image');
-            $table->float('product_price');
-            $table->integer('product_quantity');
+            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+            $table->integer('product_id')->nullable();
+            $table->string('product_name')->nullable();
+            $table->string('product_color')->nullable();
+            $table->string('product_size')->nullable();
+            $table->string('product_image')->nullable();
+            $table->float('product_price')->nullable();
+            $table->integer('product_quantity')->nullable();
             $table->timestamps();
         });
     }

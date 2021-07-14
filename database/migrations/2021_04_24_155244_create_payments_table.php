@@ -16,7 +16,10 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->tinyInteger('status')->default(1);
+            $table->float('total_amount')->nullable();
+            $table->float('pay_amount')->nullable();
+            $table->float('due_amount')->nullable();
+            $table->enum('payment_status', ['unpaid','pending','paid','conformed'])->default('pending');
             $table->date('date');
             $table->timestamps();
         });

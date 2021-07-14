@@ -20,7 +20,7 @@ class CreateAddressesTable extends Migration
             $table->string('completed_address')->nullable();
             $table->string('phone')->nullable();
             $table->string('delivery_institutions');
-            $table->enum('delivery_option', ['home', 'work', 'other'])->default('home');
+            $table->enum('delivery_option', ['HOME', 'WORK', 'OTHER'])->default('home');
             $table->timestamps();
         });
     }

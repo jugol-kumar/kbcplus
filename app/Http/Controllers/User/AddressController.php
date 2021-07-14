@@ -17,10 +17,11 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $otherAddress  = Address::where('user_id', Auth::id())->where('delivery_option', 'other')->orderBy('id', 'desc')->first();
-        $officeAddress = Address::where('user_id', Auth::id())->where('delivery_option', 'work')->orderBy('id', 'desc')->first();
-        $homeAddress   = Address::where('user_id', Auth::id())->where('delivery_option', 'home')->orderBy('id', 'desc')->first();
+        $otherAddress  = Address::where('user_id', Auth::id())->where('delivery_option', 'OTHER')->orderBy('id', 'desc')->first();
+        $officeAddress = Address::where('user_id', Auth::id())->where('delivery_option', 'WORK')->orderBy('id', 'desc')->first();
+        $homeAddress   = Address::where('user_id', Auth::id())->where('delivery_option', 'HOME')->orderBy('id', 'desc')->first();
         $address = [ $otherAddress,  $officeAddress,  $homeAddress];
+
         return response()->json([
            'code' => 200,
            'address' => $address,
@@ -107,6 +108,24 @@ class AddressController extends Controller
         //
     }
 
+
+
+    public function updateUserAddress(Request $request){
+        $address = Address::findOrFail($request->addId);
+        $address->update([
+            'user_id' => Auth::id(),
+            'delivery_address' => $request->area,
+            'completed_address' => $request->address,
+            'phone' => $request->phone,
+            'delivery_institutions' => $request->instruction,
+            'delivery_option' => $request->option,
+        ]);
+
+        return response()->json([
+            'code' => 200,
+            'msg' => "Address Update Successfully Done.. "
+        ]);
+    }
 
 
 }

@@ -27,37 +27,45 @@ Route::post('logout', [App\Http\Controllers\Auth\LoginController::class , 'logou
 
 Route::group([
     'as' => 'front.',
+    'prefix' => '/'
 ],
 function (){
     //  invakable controller for home url
     Route::get('/', HomeController::class)->name('index');
 
     //  single product details route
-    Route::get('/singel-product/{slug}', [ProductDetailsController::class, 'singleProductDetails'])->name('product.details');
+    Route::get('singel-product/{slug}', [ProductDetailsController::class, 'singleProductDetails'])->name('product.details');
 
     //  get all size by unique color with ajax
-    Route::post('/size-by-color', [ProductDetailsController::class, 'getSizeByColor'])->name('product.sizebycolor');
+    Route::post('size-by-color', [ProductDetailsController::class, 'getSizeByColor'])->name('product.sizebycolor');
 
     //  get all size by unique color with ajax
-    Route::post('/size-by-price', [ProductDetailsController::class, 'getPriceBySize'])->name('product.sizeByPrice');
+    Route::post('size-by-price', [ProductDetailsController::class, 'getPriceBySize'])->name('product.sizeByPrice');
 
 
     //  get all destrict list
-    Route::post('/all-district', [ProductDetailsController::class, 'allDistrict'])->name('get.allDistrict');
-    Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
+    Route::post('all-district', [ProductDetailsController::class, 'allDistrict'])->name('get.allDistrict');
+    Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
 
     //update cart quantity
-    Route::patch('/update-cart-quantity-minus', [CartController::class, 'updateCartQtyMinus'])->name('update.cart.minus');
-    Route::patch('/update-cart-quantity-plus', [CartController::class, 'updateCartQtyPlus'])->name('update.cart.plus');
-    Route::delete('/update-cart-delete-by-id', [CartController::class, 'updateCarDeleteById'])->name('cart.delete.byId');
-    Route::delete('/clear-cart-session', [CartController::class, 'clearCartSession'])->name('clear.cart.session');
+    Route::patch('update-cart-quantity-minus', [CartController::class, 'updateCartQtyMinus'])->name('update.cart.minus');
+    Route::patch('update-cart-quantity-plus', [CartController::class, 'updateCartQtyPlus'])->name('update.cart.plus');
+    Route::delete('update-cart-delete-by-id', [CartController::class, 'updateCarDeleteById'])->name('cart.delete.byId');
+    Route::delete('clear-cart-session', [CartController::class, 'clearCartSession'])->name('clear.cart.session');
 
     //  Cart Details Page All Route
-    Route::get('/cart-details', [CartDetailsController::class, 'cartDetailsIndex'])->name('cart.details.index');
-    Route::post('/save-cart-details', [CartDetailsController::class, 'saveCartDetails'])->name('save.cart.details');
-    Route::get('/go-to-checkout', [CartDetailsController::class, 'goToCheckout'])->name('goto.checkout');
-});
+    Route::get('cart-details', [CartDetailsController::class, 'cartDetailsIndex'])->name('cart.details.index');
+    Route::post('save-cart-details', [CartDetailsController::class, 'saveCartDetails'])->name('save.cart.details');
 
+    // this is check out page
+    Route::get('go-to-checkout/{id}', [CartDetailsController::class, 'goToCheckout'])->name('goto.checkout');
+
+    //make payment route
+    Route::post('make-payment', [CartDetailsController::class, 'makePayment'])->name('makepayment');
+
+
+
+});
 
 
 
