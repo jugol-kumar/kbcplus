@@ -740,6 +740,8 @@
 
             var attrId = $('#checkSque input[type="hidden"]').val();
 
+            console.log(attrId);
+
             var pro_id = `{{ $product->id }}`;
             var color = $('.clorclass').hasClass('hasColor');
             var color_id = $("input[name='colors']:checked").val()

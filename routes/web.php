@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\frontend\CartDetailsController;
+use App\Http\Controllers\Frontend\GetProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\ProductDetailsController;
@@ -61,8 +62,15 @@ function (){
     Route::get('go-to-checkout/{id}', [CartDetailsController::class, 'goToCheckout'])->name('goto.checkout');
 
     //make payment route
-    Route::post('make-payment', [CartDetailsController::class, 'makePayment'])->name('makepayment');
+    Route::post('make-payment', [CartDetailsController::class, 'paymentByOrder'])->name('makepayment');
 
+    Route::get('order-successfully-dene', [CartDetailsController::class, 'successfullyDone'])->name('order.successful');
+
+    // product's by category id
+    Route::get('product-by-category-id/{id}', [GetProductController::class, 'productByCatId'])->name('category.product');
+
+    // product's by category id
+    Route::get('product-by-brand-id/{id}', [GetProductController::class, 'productByBrandId'])->name('brand.product');
 
 
 });

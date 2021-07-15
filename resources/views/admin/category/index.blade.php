@@ -68,7 +68,7 @@
                                 <input type="text" name="name" id="name" placeholder="Enter Category Name..." class="form-control">
                             </div>
                             <div class="form-row mb-3">
-                                <label for="">Icon Class Name</label>
+                                <label for="">Icon Class Name</label> <a href="https://icofont.com/" class="small" target="_blank">  Click Here And Use This Icon</a>
                                 <input type="text" name="icon_class" id="icon_class" placeholder="Enter Class" class="form-control">
                             </div>
                             <div class="form-row">

@@ -41,15 +41,15 @@
                             <div class="invoice-mid clearfix">
 
                                 <div class="clientlogo">
-                                    <img src="{{ asset('assets/admin/images/sm/avatar2.jpg') }}" alt="user" class="rounded-circle img-fluid">
+                                    <img src="{{ $order->user->profile_image == null ? config('app.placeholder') : $order->user->profile_image }}" alt="user" class="rounded-circle img-fluid">
                                 </div>
 
                                 <div class="info">
-                                    <h6>{{ $order->shipping->first_name }} {{ $order->shipping->last_name }}</h6>
-                                    <p>{{ $order->shipping->email }}<br>
-                                        {{ $order->shipping->phone }}</p>
-                                    <h6>Project Description</h6>
-                                    <p>{{ $order->shipping->full_address }}</p>
+                                    <h6>{{ $order->user->name }} </h6>
+                                    <p>{{ $order->address->delivery_address }}
+                                    <p>{{ $order->address->completed_address }}<br>
+                                        {{ $order->address->phone }}</p>
+                                    <p>{{ $order->address->delivery_institutions }}</p>
                                 </div>
 
                             </div>
@@ -68,8 +68,8 @@
                                     @foreach($order->orderDetails as $key => $odetail)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $odetail->product_name }}</td>
-                                            <td><img src="{{ asset('storage/product/avatar') }}/{{ $odetail->product_image }}"  class="rounded-circle" width="50" height="50" alt=""></td>
+                                            <td><a href="javascript:void(0)"></a>{{ Str::limit($odetail->product_name, 25) }}</td>
+                                            <td><img src="{{ asset('storage/product') }}/{{ $odetail->product_image }}"  class="rounded-circle" width="50" height="50" alt=""></td>
                                             <td>{{ $odetail->product_price }}</td>
                                             <td>{{ $odetail->product_quantity }}</td>
                                             <td>{{ $total = $odetail->product_price *  $odetail->product_quantity  }}</td>
@@ -86,9 +86,9 @@
                                     <p>Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.</p>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <p class="m-b-0"><b>Sub-total:</b> {{ $subTotal }}</p>
-                                    <p class="m-b-0">VAT:  ({{ $tax = config('cart.tax') }}%) {{$taxVal = ($subTotal * $tax)/100 }}</p>
-                                    <h3 class="m-b-0 m-t-10">{{ $subTotal + $taxVal }}</h3>
+                                    <p class="m-b-0"><b>Sub-total:</b> &#2547;  {{ $subTotal }}</p>
+                                    <p class="m-b-0">Delivery Cost:  &#2547;  {{ $shippingCost = 60 }}</p>
+                                    <h3 class="m-b-0 m-t-10">&#2547;  {{ $subTotal + $shippingCost }}</h3>
                                 </div>
                                 <div class="hidden-print col-md-12 text-right">
                                     <hr>

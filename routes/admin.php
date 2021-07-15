@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryDeleteController;
@@ -74,6 +75,8 @@ Route::get('product-attribute-form/{id}', [ProductAttributeController::class, 'i
 Route::get('delete/category/{id}', [CategoryDeleteController::class, 'deleteCat'])->name('delete.cat');
 
 
+//slider resource controller
+Route::resource('slider', SliderController::class);
 
 
 //check for product variation in this route

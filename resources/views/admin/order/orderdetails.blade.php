@@ -4,21 +4,21 @@
         <div class="container-fluid">
             <div class="row mt-5">
                 <div class="col-lg-4 col-md-12 align-center">
-                    <h3>Customer Information</h3>
+                    <h3>user Information</h3>
                     <div class="card profile-header">
                         <div class="body">
                             <div class="profile-image"> <img src="{{ asset('assets/admin/images/user.png') }}" class="rounded-circle" alt=""> </div>
                             <hr>
                             <div>
-                                <h4 class="m-b-0"><strong>{{ $order->customer->first_name }}</strong> {{ $order->customer->last_name }}</h4>
-                                <span>{{ $order->customer->email }}</span><br>
-                                <span>{{ $order->customer->phone }}</span>
+                                <h4 class="m-b-0"><strong>{{ $order->user->first_name }}</strong> {{ $order->user->last_name }}</h4>
+                                <span>{{ $order->user->email }}</span><br>
+                                <span>{{ $order->user->phone }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            Customer Full Details
+                            user Full Details
                         </div>
                         <div class="card-body">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis facilis fugit magnam minus quos sunt! A aliquam, blanditiis harum mollitia odit quae saepe sint sunt? Aliquam deserunt laborum numquam repudiandae!</p>
@@ -31,28 +31,24 @@
                        <div class="card-body">
                            <table class="table table-striped table-bordered">
                                 <tr>
-                                    <th>Email Address</th>
-                                    <td>{{ $order->shipping->email }}</td>
-                                </tr>
-                                <tr>
                                     <th>Phone Number</th>
-                                    <td>{{ $order->shipping->phone }}</td>
+                                    <td>{{ $order->address->phone }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Full Name</th>
-                                    <td>{{ $order->shipping->first_name }} {{ $order->shipping->last_name }}</td>
+                                    <th>Address Area</th>
+                                    <td>{{ $order->address->delivery_address }}</td>
                                 </tr>
                                <tr>
                                    <th>Division</th>
-                                   <td>{{ $order->shipping->division }}</td>
+                                   <td>{{ $order->address->completed_address }}</td>
                                </tr>
                                 <tr>
                                     <th>District</th>
-                                    <td>{{ $order->shipping->district }}</td>
+                                    <td>{{ $order->address->delivery_option }}</td>
                                 </tr>
                                 <tr>
                                     <th>Full Address</th>
-                                    <td>{{ $order->shipping->full_address }}</td>
+                                    <td>{{ $order->address->delivery_institutions }}</td>
                                 </tr>
                            </table>
                        </div>
@@ -70,8 +66,7 @@
                                             <th>Payment Date</th>
                                         </thead>
                                         <tbody>
-                                            <td>{{ $order->payment->type == 'cod' ? "CashOn Delivery" : '' }}</td>
-                                            <td>{{ $order->payment->status == 1 ? "Pending" : 'Approved' }}</td>
+                                            <td>{{ $order->payment->payment_status }}</td>
                                             <td>{{ $order->payment->date }}</td>
                                         </tbody>
                                     </table>
@@ -100,8 +95,8 @@
                                 @foreach($order->orderDetails as $key => $odetail)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $odetail->product_name }}</td>
-                                        <td><img src="{{ asset('storage/product/avatar') }}/{{ $odetail->product_image }}"  class="rounded-circle" width="50" height="50" alt=""></td>
+                                        <td><a href="javascript:void(0)">{{ str_limit($odetail->product_name, 25) }}</a></td>
+                                        <td><img src="{{ asset('storage/product') }}/{{ $odetail->product_image }}"  class="rounded-circle" width="50" height="50" alt=""></td>
                                         <td>{{ $odetail->product_price }}</td>
                                         <td>{{ $odetail->product_quantity }}</td>
                                         <td>{{ $total = $odetail->product_price *  $odetail->product_quantity  }}</td>

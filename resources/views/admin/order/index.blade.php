@@ -40,27 +40,17 @@
                                     @foreach ($orders as $key=> $order)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $order->customer->email }}</td>
-                                            <td>{{ $order->customer->phone }}</td>
+                                            <td>{{ $order->user->email }}</td>
+                                            <td>{{ $order->user->phone }}</td>
                                             <td>{{ $order->total }}</td>
                                             <td>
-                                                @if ($order->payment->type == 'cod')
-                                                    <span class="btn g-limeade">Cash On Delivery</span>
-                                                @endif
+                                                <span class="btn g-limeade">Cash On Delivery</span>
                                             </td>
                                             <td>
-                                                @if ($order->payment->status == 1)
-                                                    <span class="badge badge-info">Pending</span>
-                                                @else
-                                                    <span class="badge badge-success">Approved</span>
-                                                @endif
+                                                <span class="badge badge-info">Pending</span>
                                             </td>
                                             <td>
-                                                @if ($order->order_status == 1)
-                                                    <span class="badge badge-warning">Pending</span>
-                                                @else
-                                                    <span class="badge badge-success">Approved</span>
-                                                @endif
+                                                <span class="badge badge-warning">Pending</span>
                                             </td>
 
                                             <td>
@@ -71,10 +61,10 @@
                                                     <div class="dropdown-menu bg-btn-color" aria-labelledby="btnGroupDrop1" x-placement="bottom-start">
                                                         <a class="dropdown-item" href="{{ route('app.showOrder', $order->id) }}"><i class="icon-paper-plane mr-2"></i>View Order</a>
                                                         <a class="dropdown-item" href="{{ route('app.createInvoice', $order->id) }}"><i class="icon-settings mr-2"></i>Create Invoice</a>
-                                                        @if ($order->payment->status == 1)
+                                                        @if ($order->payment_status == 'unpaid')
                                                             <a class="dropdown-item" href="{{ route('app.approvedPayment', $order->id) }}"><i class="icon-arrow-up mr-2"></i>Approved Payment</a>
                                                         @endif
-                                                        @if ($order->order_status == 1)
+                                                        @if ($order->order_status == 'pending')
                                                             <a class="dropdown-item" href="{{ route('app.approvedOrder', $order->id) }}"><i class="icon-arrow-up mr-2"></i>Approved Order</a>
                                                         @endif
                                                         <a class="dropdown-item" onclick="showCancelMessage({{ $order->id }}); event.preventDefault();"><i class="icon-trash mr-2"></i> Delete Order</a>

@@ -16,38 +16,38 @@
                             <div class="table-responsive">
                                 <table id="show-table" class="table table-striped js-basic-example  table-custom">
                                     <thead>
-                                        <tr>
-                                            <th>#Id</th>
-                                            <th>Brand's Name</th>
-                                            <th>Avatar</th>
-                                            <th>Description</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
+                                    <tr>
+                                        <th>#Id</th>
+                                        <th>Brand's Name</th>
+                                        <th>Avatar</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </thead>
                                     <tfoot>
-                                        <tr>
-                                            <th>#Id</th>
-                                            <th>Brand's Name</th>
-                                            <th>Avatar</th>
-                                            <th>Description</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
+                                    <tr>
+                                        <th>#Id</th>
+                                        <th>Brand's Name</th>
+                                        <th>Avatar</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </tfoot>
                                     <tbody>
 
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
     </div>
 
-{{--    ----------------------------------------add Modal Start modal is here --------------------------------------}}
+    {{--    ----------------------------------------add Modal Start modal is here --------------------------------------}}
     <div class="modal fade" id="add-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -60,7 +60,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                   <div class="form-group">
+                                    <div class="form-group">
                                         <label for="">Brand's Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Enter Brand's Name...">
                                     </div>
@@ -77,10 +77,6 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                   <div class="form-group">
-                                        <h4 class="card-title mb-5">Brand's Details</h4>
-                                        <textarea name="description" class="form-control" id="descriptoin" rows="5" placeholder="Enter some details for this brand's..."></textarea>
-                                   </div>
                                     <div class="form-group mt-3">
                                         <label class="label">
                                             <div class="toggle">
@@ -93,8 +89,8 @@
                                 </div>
 
                                 <div class="btn-group mt-3">
-                                      <button id="save-brand" class="btn btn-primary">Save</button>
-                                      <button type="submit" class="btn btn-danger">Cancel</button>
+                                    <button id="save-brand" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-danger">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -103,9 +99,9 @@
             </div>
         </div>
     </div>
-{{--    ----------------------------------------add Modal end modal is here ----------------------------------------}}
+    {{--    ----------------------------------------add Modal end modal is here ----------------------------------------}}
 
-{{--    ----------------------------------------edit Modal Start modal is here --------------------------------------}}
+    {{--    ----------------------------------------edit Modal Start modal is here --------------------------------------}}
     <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -118,7 +114,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                   <div class="form-group">
+                                    <div class="form-group">
                                         <label for="">Brand's Name</label>
                                         <input type="text" name="name" class="form-control" id="name">
                                         <input type="hidden" name="id" id="editId">
@@ -135,10 +131,10 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                   <div class="form-group">
+                                    <div class="form-group">
                                         <h4 class="card-title mb-5">Brand's Details</h4>
                                         <textarea name="description" class="form-control" id="description" rows="5" placeholder="Enter some details for this brand's..."></textarea>
-                                   </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-8 col-md-8 ">
                                     <div class="form-group mt-3">
@@ -150,8 +146,8 @@
                                             <div class="label-text">Status</div>
                                         </label>
                                     </div>
-                                  <button id="save-brand" class="btn btn-primary">Save</button>
-                                  <button  id="cancel"class="btn btn-danger">Cancel</button>
+                                    <button id="save-brand" class="btn btn-primary">Save</button>
+                                    <button  id="cancel"class="btn btn-danger">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -160,7 +156,7 @@
             </div>
         </div>
     </div>
-{{--    ----------------------------------------edit Modal end modal is here ----------------------------------------}}
+    {{--    ----------------------------------------edit Modal end modal is here ----------------------------------------}}
 
 
 @endsection
@@ -187,7 +183,7 @@
         $('#add-brand').submit(function(e){
             event.preventDefault();
             $.ajax({
-                url: "{{ route('app.brand.store') }}",
+                url: "{{ route('app.slider.store') }}",
                 method: "POST",
                 data: new FormData(this),
                 dataType: 'JSON',
@@ -281,16 +277,16 @@
                 data.push({name:'status', value:''});
             }
             $.ajax({
-               url: "{{ route('app.brand.update') }}",
+                url: "{{ route('app.brand.update') }}",
                 type:"POST",
-               dataType: "JSON",
-               data:data,
-               success: function (res){
-                   if (res.code === 200){
-                       table.ajax.reload();
-                       $('#edit-modal').modal('hide');
-                   }
-               }
+                dataType: "JSON",
+                data:data,
+                success: function (res){
+                    if (res.code === 200){
+                        table.ajax.reload();
+                        $('#edit-modal').modal('hide');
+                    }
+                }
             });
         });
 

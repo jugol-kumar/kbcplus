@@ -19,7 +19,7 @@
 <div class="border-bottom p-3 d-none mobile-nav">
     <div class="title d-flex align-items-center">
         <a href="home.html" class="text-decoration-none text-dark d-flex align-items-center">
-            <img class="osahan-logo mr-2" src="{{asset('assets/frontend/img/logo.png')}}">
+            <img class="osahan-logo mr-2" src="{{asset('assets/frontend/img/main-logo.png')}}">
             <h4 class="font-weight-bold text-success m-0">Grocery</h4>
         </a>
         <p class="ml-auto m-0">

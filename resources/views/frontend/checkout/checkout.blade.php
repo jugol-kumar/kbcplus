@@ -21,7 +21,6 @@
                         <p class="small text-muted m-0">{{ $shippingAddress->phone }}</p>
                         <h6 class="small text-muted m-0">Contract With me: {{ $shippingAddress->delivery_institutions }}</h6>
                     </div>
-
                     <div class="address p-3 bg-light">
                         <h6 class="text-dark m-0">Promo Code</h6>
                     </div>
@@ -37,7 +36,6 @@
                                     </span>
                                     <i class="icofont-rounded-down ml-auto"></i>
                                 </a>
-
                             </div>
                             <div id="collapseThree" class="collapse p-3 border-top" aria-labelledby="headingThree"
                                  data-parent="#accordionExample">
@@ -110,13 +108,10 @@
                             </div>
                         </div>
                     </div>
+                    <a href="javascript:void(0)" id="placeOrder" class="btn btn-success btn-lg btn-block mt-3 mb-3">Place Order</a>
                     <p class="text-success text-center">Your Total Savings on this order &#2547; 0.00</p>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
 
@@ -409,19 +404,19 @@
 
 
         $('body').on('click', '#placeOrder', function (){
-            var pStatus = $('#customControlAutosizing:checked').val();
+            var pType = $('#customControlAutosizing:checked').val();
             var orderId = "{{ $order->id }}"
-            if (pStatus == 'cod'){
+            if (pType == 'cod'){
                 $.ajax({
                     url: '{{ route('front.makepayment') }}',
-                    data: {pStatus:pStatus,orderId:orderId, _token:'{{ csrf_token() }}'},
+                    data: {pType:pType,orderId:orderId, _token:'{{ csrf_token() }}'},
                     dataType: "JSON",
                     type: 'POST',
                     success:function (res){
                         if (res.code == 200){
                             console.log(res);
                             $('#exampleModal').modal('hide');
-                            window.location.reload();
+                            window.location.href = "{{ route('front.order.successful') }}";
                             sTost(res.msg);
                         }
                     }

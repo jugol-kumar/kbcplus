@@ -56,7 +56,7 @@
                                                         <img src="{{ config('app.productImage') }}" class="rounded-circle" width="50" height="50" alt="">
                                                     @endif
                                                 </td>
-                                                <td>{{ $product->title }}</td>
+                                                <td>{{ Str::limit($product->title, 15) }}</td>
                                                 <td>{{ isset($product->category->name) ? $product->category->name : 'NULL' }}</td>
                                                 <td>{{ isset($product->brand->name) ? $product->brand->name : 'NULL'  }}</td>
                                                 <td>

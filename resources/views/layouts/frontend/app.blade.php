@@ -28,6 +28,19 @@
 
 <body class="fixed-bottom-padding">
 
+
+    <div id="pagePreloder">
+        <div>
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+            <div class="line line-4"></div>
+            <div class="line line-5"></div>
+        </div>
+    </div>
+
+
+
     @include('layouts.frontend.pertial.header-top')
 
     <div class="theme-switch-wrapper">
@@ -53,7 +66,7 @@
 
 
 
-    <section class="py-4 osahan-main-body">
+    <section class="osahan-main-body">
         @yield('content')
     </section>
 
@@ -446,7 +459,6 @@
     </footer>
 
 
-
 {{-- user login and registration droware page... --}}
 <div>
 
@@ -589,6 +601,18 @@
 
 
     <script>
+        // $('body').addClass('d-none')
+        // $('#wait').fadeIn('slow');
+
+        $(document).ready(function (){
+            setTimeout(function (){
+
+                // $('#wait').fadeOut('slow');
+                $('body').removeClass('d-none')
+            }, 5000)
+        });
+
+
         // cart quentity minus ajax request
         $('body').on('click', '.cart-quentiy-minus', function (e){
             e.preventDefault();
@@ -689,11 +713,6 @@
 
 
     </script>
-
-
-
-
-
     @stack('js')
 </body>
 

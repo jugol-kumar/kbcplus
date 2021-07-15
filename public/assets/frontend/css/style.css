@@ -793,6 +793,135 @@ span.c-number {
     color: #484747;
 }
 
+.user-profile-notfound>img{
+    width:350px; margin: 81px 160px;
+}
+
+.user-profile-notfound>h3{
+    text-align: center;
+    margin: -66px;
+    position: relative;
+    left: 49px;
+    color: #828282;
+}
+
+
+.user-profile-notification>img{
+    width: 170px;
+    height: 367px;
+    margin: auto;
+    display: block;
+    align-items: center;
+    position: relative;
+    top: -46px;
+    left: 26px;
+}
+
+.product-category-notfound>img{
+    width: 69%;
+    margin-left: 43%;
+}
+.product-category-notfound>h3{
+    text-align: center;
+    color: #194675;
+    margin: 32px;
+    position: relative;
+    left: 29%;
+    top: -30px;
+}
+
+
+
+
+
+.product-brand-notfound>img{
+    width: 69%;
+    margin-left: 35%;
+}
+.product-brand-notfound>h3{
+    text-align: center;
+    color: #194675;
+    margin: 32px;
+    position: relative;
+    left: 15%;
+    top: -30px;
+}
+
+
+
+
+.bg-awat{
+    background: linear-gradient(to left, #83a4d4, #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+/* data table desing*/
+
+
+.dataTables_filter{
+    float: left!important;
+}
+
+
+.main-category-section{
+    background: #ffffff;
+    border: 1px solid #eae9e9;
+    border-top: none;
+    margin-left: 15px;
+}
+.main-category-section li{
+    border-bottom: 1px solid #eae9e9;
+}
+.main-category-section li a{
+    color: #0b2e13;
+    padding: 13px 26px;
+    display: block;
+    font-size: 15px;
+}
+.main-category-section li:hover a{
+    background: #eae9e9;
+}
+
+
+
+.main-card-section{
+    height: 86px;
+    padding: 19px;
+}
+
+.slick-arrow, .slick-arrow:hover, .slick-arrow:focus{
+    display: none !important;
+}
+
+
+/* menu icon style*/
+.menu-icon-style{
+    font-size: 23px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+    right: 1px;
+}
+
+
+/**/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .bg-success {
 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#fbbf3b+0,5ad363+100 */
 	background: #fbbf3b;

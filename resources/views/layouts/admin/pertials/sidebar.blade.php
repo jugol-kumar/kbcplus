@@ -77,8 +77,8 @@
                         <li class="{{ Request::is('app/order*') ? 'active' : '' }}">
                             <a href="{{ route('app.order') }}"><i class="icon-basket"></i> <span>Order</span></a>
                         </li>
-                        <li class="{{ Request::is('app/check-product*') ? 'active' : '' }}">
-                            <a href="{{ route('app.check.index') }}"><i class="icon-basket"></i> <span>Check Product</span></a>
+                        <li class="{{ Request::is('app/slider*') ? 'active' : '' }}">
+                            <a href="{{ route('app.slider.index') }}"><i class="icon-basket"></i> <span>Slider</span></a>
                         </li>
                     </ul>
                 </nav>
