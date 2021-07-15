@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\admin\CheckproductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CheckproductController;
 use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductAttributeController;

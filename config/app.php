@@ -165,6 +165,9 @@ return [
         /*
          * Package Service Providers...
          */
+        Nexmo\Laravel\NexmoServiceProvider::class,
+
+
 
         /*
          * Application Service Providers...
@@ -236,6 +239,8 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
     ],
 
 ];

@@ -3,8 +3,8 @@
 
 use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\IndexController;
-use App\Http\Controllers\user\OrderController;
-use App\Http\Controllers\user\PromosController;
+use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\User\PromosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('index',IndexController::class )->name('dashboard');
@@ -18,6 +18,19 @@ Route::get('promos', [PromosController::class, 'promosIndex'])->name('promos.ind
 
 //my order route
 Route::get('my-orders', [OrderController::class, 'myOrderIndex'])->name('my.order');
+
+
+Route::get('verify', [\App\Http\Controllers\VerifyController::class, 'getVerify'])->name('getVerify');
+Route::post('verify', [\App\Http\Controllers\VerifyController::class, 'postVerify'])->name('postVerify');
+
+
+
+
+
+
+
+
+
 
 
 Route::post('logout', [IndexController::class, 'userLogout'])->name('logout');

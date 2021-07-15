@@ -66,8 +66,8 @@
                                             <th>Payment Date</th>
                                         </thead>
                                         <tbody>
-                                            <td>{{ $order->payment->payment_status }}</td>
-                                            <td>{{ $order->payment->date }}</td>
+                                            <td>{{ $order->payment_id ? $order->payment->payment_status : ''}}</td>
+                                            <td>{{ $order->payment_id ? $order->payment->date:'' }}</td>
                                         </tbody>
                                     </table>
                                 </div>
